@@ -1,0 +1,39 @@
+# Entorno virtual
+.venv/
+venv/
+
+# ChromaDB - base vectorial (se genera en runtime)
+localrag/data/
+
+# Variables de entorno
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.spec
+
+# VS Code
+.vscode/
+
+# PyInstaller
+*.exe
+*.bin
+
+# Archivos temporales
+*.tmp
+*.log
+*.pdf
+*.docx
+*.xlsx
+*.csv
+*.txt
+
+# macOS
+.DS_Store
