@@ -1,6 +1,6 @@
 # LocalRAG
 
-Chatbot RAG 100% local para empresas. Hacé preguntas sobre tus documentos internos sin que ningún dato salga a internet.
+Chatbot RAG 100% local para empresas. Puedes hacer preguntas sobre tus documentos internos sin que ningún dato salga a internet.
 
 ## Requisitos
 
@@ -33,7 +33,7 @@ ollama pull nomic-embed-text
 python localrag/main.py
 ```
 
-Abre el browser en `http://localhost:8080`, subí documentos y hacé preguntas.
+Abre el browser en `http://localhost:8080`, sube tus documentos y empieza a hacer preguntas.
 
 ## Formatos soportados
 
