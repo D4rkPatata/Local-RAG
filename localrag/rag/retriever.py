@@ -15,7 +15,7 @@ Instrucciones:
 
 def recuperar_contexto(pregunta: str) -> list[dict]:
     embedding = embed(pregunta)
-    return query(embedding, top_k=settings.top_k)
+    return query(embedding, pregunta, top_k=settings.top_k)
 
 def generar_user_prompt(pregunta: str, chunks: list[dict]) -> str:
     contexto = "\n\n---\n\n".join(
