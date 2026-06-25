@@ -21,7 +21,7 @@ uv venv --python 3.12 --prompt local-rag
 uv pip install -r requirements.txt
 
 # Modelo de chat (una sola vez, con red)
-ollama pull mistral:7b-instruct-q4_K_M
+ollama pull qwen2.5:3b
 ```
 
 > Los **embeddings son locales** (`sentence-transformers`, sin Ollama). El sistema
@@ -38,7 +38,17 @@ python scripts/reindex_nexus.py
 python localrag/main.py
 ```
 
-Abre `http://localhost:8080`, elige tu **rol** en el selector y haz preguntas.
+Abre `http://localhost:8080`, elige tu **rol** en el selector y haz preguntas. El
+chat mantiene **memoria de conversación** (preguntas de seguimiento) y **cita la
+fuente** (`doc_id`) en cada respuesta. Cambiar de rol reinicia la conversación.
+
+Guía de preguntas de prueba: [docs/preguntas_prueba.md](docs/preguntas_prueba.md).
+Para simular varios usuarios concurrentes con distintos roles:
+
+```bash
+python scripts/simular_usuarios.py            # contra localhost
+python scripts/simular_usuarios.py http://<ip>:8080   # contra otra laptop en la LAN
+```
 
 ## Control de acceso por rol
 
@@ -84,12 +94,23 @@ python -m pytest tests/           # tests del control de acceso
 
 ## Stack
 
-- **Backend:** Python + FastAPI
+- **Backend:** Python 3.12 (uv) + FastAPI
 - **Retriever:** híbrido denso+disperso (embeddings + BM25) con RRF; LDA como ablation
 - **Embeddings:** `paraphrase-multilingual-MiniLM-L12-v2` (sentence-transformers, local)
-- **LLM:** Mistral 7B vía Ollama (local)
+- **LLM:** Qwen2.5-3B vía Ollama (local); configurable en `config` (`chat_model`)
 - **Vector DB:** ChromaDB (con filtro de acceso por metadata)
 - **UI:** HTML/CSS/JS
+
+## Configuración (`localrag/config/__init__.py`)
+
+| Ajuste | Default | Qué controla |
+|---|---|---|
+| `chat_model` | `qwen2.5:3b` | Modelo de Ollama para la generación |
+| `temperature` | `0.2` | Baja = respuestas factuales y consistentes |
+| `top_k` | `10` | Chunks recuperados por consulta |
+| `refusal_mode` | `opaque` | `opaque` (no revela) u `honest` (admite restricción) |
+| `max_history_messages` | `6` | Turnos de memoria de conversación |
+| `app_mode` | `desktop` | `desktop` (solo localhost) o `server` (LAN) |
 
 ## Formatos soportados
 
