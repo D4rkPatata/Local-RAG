@@ -1,0 +1,661 @@
+{
+  "company": {
+    "name": "Nexus Soluciones S.A.C.",
+    "ruc": "20601847392",
+    "founded": "2017-03-14",
+    "sector": "Tecnología de la Información y Consultoría",
+    "description": "Empresa peruana de servicios TI especializada en desarrollo de software a medida, consultoría tecnológica e infraestructura cloud para el sector financiero, retail y salud.",
+    "headquarters": {
+      "address": "Av. Javier Prado Este 4200, Piso 8",
+      "district": "San Isidro",
+      "city": "Lima",
+      "country": "Perú",
+      "phone": "(01) 611-4200",
+      "email_domain": "@nexussoluciones.pe",
+      "website": "www.nexussoluciones.pe"
+    },
+    "offices": [
+      {
+        "location": "San Isidro, Lima (Sede Principal)",
+        "floors": "Piso 8 y 9",
+        "capacity": 130,
+        "parking": true
+      },
+      {
+        "location": "Miraflores, Lima (Oficina de Proyectos)",
+        "address": "Calle Berlín 1044, Piso 3",
+        "capacity": 40,
+        "parking": false
+      }
+    ],
+    "financials": {
+      "annual_revenue_soles": 9200000,
+      "annual_revenue_label": "S/. 9.2 millones",
+      "fiscal_year_end": "31 de diciembre",
+      "employees_total": 148,
+      "employees_planilla": 132,
+      "employees_locadores": 16
+    },
+    "certifications": ["ISO 9001:2015", "ISO 27001:2022"],
+    "main_clients_sector": ["Banca y Finanzas", "Retail", "Salud", "Seguros"],
+    "mission": "Transformar digitalmente a nuestros clientes mediante soluciones tecnológicas de alta calidad, asegurando la confidencialidad e integridad de su información.",
+    "vision": "Ser la empresa de tecnología de referencia en el Perú para sectores con alta regulación de datos al año 2028.",
+    "values": ["Integridad", "Innovación", "Compromiso", "Confidencialidad", "Excelencia"]
+  },
+
+  "leadership": {
+    "board": [
+      {
+        "role": "Presidente del Directorio",
+        "name": "Eduardo Vargas Llona",
+        "email": "e.vargas@nexussoluciones.pe"
+      }
+    ],
+    "executives": [
+      {
+        "role": "Gerente General (CEO)",
+        "name": "Ricardo Mendoza Paredes",
+        "email": "r.mendoza@nexussoluciones.pe",
+        "phone_ext": "101",
+        "reports_to": "Directorio",
+        "since": "2017"
+      },
+      {
+        "role": "Gerente de Finanzas y Administración (CFO)",
+        "name": "Patricia Quispe Huamán",
+        "email": "p.quispe@nexussoluciones.pe",
+        "phone_ext": "102",
+        "reports_to": "Gerente General",
+        "since": "2018"
+      },
+      {
+        "role": "Gerente de Tecnología (CTO)",
+        "name": "Andrés Flores Castillo",
+        "email": "a.flores@nexussoluciones.pe",
+        "phone_ext": "103",
+        "reports_to": "Gerente General",
+        "since": "2017"
+      },
+      {
+        "role": "Gerente de Recursos Humanos (CHRO)",
+        "name": "Silvia Torres Vega",
+        "email": "s.torres@nexussoluciones.pe",
+        "phone_ext": "104",
+        "reports_to": "Gerente General",
+        "since": "2019"
+      },
+      {
+        "role": "Gerente Comercial y de Proyectos",
+        "name": "Carlos Amat y León Ríos",
+        "email": "c.amat@nexussoluciones.pe",
+        "phone_ext": "105",
+        "reports_to": "Gerente General",
+        "since": "2020"
+      },
+      {
+        "role": "Gerente Legal y Compliance",
+        "name": "Mónica Salinas Bustamante",
+        "email": "m.salinas@nexussoluciones.pe",
+        "phone_ext": "106",
+        "reports_to": "Gerente General",
+        "since": "2021"
+      }
+    ]
+  },
+
+  "departments": [
+    {
+      "id": "RRHH",
+      "name": "Recursos Humanos",
+      "head": "Silvia Torres Vega",
+      "head_email": "s.torres@nexussoluciones.pe",
+      "headcount": 8,
+      "location": "San Isidro, Piso 8",
+      "key_contacts": [
+        {"role": "Especialista de Selección", "name": "Lucía Romero Díaz", "email": "l.romero@nexussoluciones.pe", "ext": "201"},
+        {"role": "Especialista de Compensaciones", "name": "Jorge Palacios Ríos", "email": "j.palacios@nexussoluciones.pe", "ext": "202"},
+        {"role": "Analista de Bienestar", "name": "Valeria Chávez Núñez", "email": "v.chavez@nexussoluciones.pe", "ext": "203"}
+      ]
+    },
+    {
+      "id": "TI",
+      "name": "Tecnología e Infraestructura",
+      "head": "Andrés Flores Castillo",
+      "head_email": "a.flores@nexussoluciones.pe",
+      "headcount": 28,
+      "location": "San Isidro, Piso 9",
+      "key_contacts": [
+        {"role": "Líder de Infraestructura", "name": "Marco Huanca Soto", "email": "m.huanca@nexussoluciones.pe", "ext": "301"},
+        {"role": "Responsable de Seguridad (CISO)", "name": "Diana Reyes Castañeda", "email": "d.reyes@nexussoluciones.pe", "ext": "302"},
+        {"role": "Soporte TI N1", "name": "Mesa de Ayuda", "email": "helpdesk@nexussoluciones.pe", "ext": "300", "hours": "Lun-Vie 8:00-19:00, Sáb 9:00-13:00"}
+      ]
+    },
+    {
+      "id": "DEV",
+      "name": "Desarrollo de Software",
+      "head": "Andrés Flores Castillo",
+      "head_email": "a.flores@nexussoluciones.pe",
+      "headcount": 42,
+      "location": "San Isidro, Piso 9 / Miraflores",
+      "key_contacts": [
+        {"role": "Tech Lead Backend", "name": "Sebastián Quiroga Medina", "email": "s.quiroga@nexussoluciones.pe", "ext": "401"},
+        {"role": "Tech Lead Frontend", "name": "Andrea Villanueva Cruz", "email": "a.villanueva@nexussoluciones.pe", "ext": "402"},
+        {"role": "QA Lead", "name": "Fernando Cáceres Alva", "email": "f.caceres@nexussoluciones.pe", "ext": "403"}
+      ]
+    },
+    {
+      "id": "CONS",
+      "name": "Consultoría y Proyectos",
+      "head": "Carlos Amat y León Ríos",
+      "head_email": "c.amat@nexussoluciones.pe",
+      "headcount": 35,
+      "location": "Miraflores / San Isidro",
+      "key_contacts": [
+        {"role": "PMO Lead", "name": "Rosa Mendívil Parodi", "email": "r.mendivil@nexussoluciones.pe", "ext": "501"},
+        {"role": "Líder de Consultoría Senior", "name": "Óscar Tapia Gutiérrez", "email": "o.tapia@nexussoluciones.pe", "ext": "502"}
+      ]
+    },
+    {
+      "id": "ADMIN",
+      "name": "Finanzas y Administración",
+      "head": "Patricia Quispe Huamán",
+      "head_email": "p.quispe@nexussoluciones.pe",
+      "headcount": 14,
+      "location": "San Isidro, Piso 8",
+      "key_contacts": [
+        {"role": "Jefe de Contabilidad", "name": "Roberto Farfán Lezama", "email": "r.farfan@nexussoluciones.pe", "ext": "601"},
+        {"role": "Analista de Compras", "name": "Carmen Villacorta Ruiz", "email": "c.villacorta@nexussoluciones.pe", "ext": "602"},
+        {"role": "Caja y Viáticos", "name": "Daniela Soto Peña", "email": "d.soto@nexussoluciones.pe", "ext": "603"}
+      ]
+    },
+    {
+      "id": "LEGAL",
+      "name": "Legal y Compliance",
+      "head": "Mónica Salinas Bustamante",
+      "head_email": "m.salinas@nexussoluciones.pe",
+      "headcount": 5,
+      "location": "San Isidro, Piso 8",
+      "key_contacts": [
+        {"role": "Abogado Senior", "name": "Hernán Delgado Espino", "email": "h.delgado@nexussoluciones.pe", "ext": "701"},
+        {"role": "Oficial de Protección de Datos (DPO)", "name": "Mónica Salinas Bustamante", "email": "dpo@nexussoluciones.pe", "ext": "106"}
+      ]
+    },
+    {
+      "id": "VENTAS",
+      "name": "Ventas y Marketing",
+      "head": "Carlos Amat y León Ríos",
+      "head_email": "c.amat@nexussoluciones.pe",
+      "headcount": 11,
+      "location": "San Isidro, Piso 8",
+      "key_contacts": [
+        {"role": "Key Account Manager", "name": "Fiorella Montoya Bravo", "email": "f.montoya@nexussoluciones.pe", "ext": "801"},
+        {"role": "Marketing Digital", "name": "Diego Cornejo Suárez", "email": "d.cornejo@nexussoluciones.pe", "ext": "802"}
+      ]
+    }
+  ],
+
+  "hr_policies": {
+    "work_schedule": {
+      "standard_hours_per_week": 48,
+      "standard_hours_per_day": 8,
+      "schedule_options": [
+        {"name": "Turno A", "entry": "08:00", "exit": "17:30", "lunch_minutes": 60},
+        {"name": "Turno B", "entry": "09:00", "exit": "18:30", "lunch_minutes": 60},
+        {"name": "Turno C (solo Miraflores)", "entry": "10:00", "exit": "19:30", "lunch_minutes": 60}
+      ],
+      "saturday": "No laborable para personal administrativo. Sí para proyectos con cliente, con compensación.",
+      "remote_work_days_per_week": 2,
+      "remote_work_eligible_from_month": 3
+    },
+    "vacations": {
+      "days_per_year": 30,
+      "days_per_year_law": 30,
+      "minimum_continuous_days": 7,
+      "request_advance_days": 15,
+      "approval_authority": "Jefe directo + RR.HH.",
+      "vacation_platform": "Portal RR.HH. en intranet: intranet.nexussoluciones.pe/vacaciones",
+      "carry_over_max_days": 15,
+      "carry_over_deadline": "31 de marzo del año siguiente",
+      "vacation_pay": "Remuneración mensual completa por 30 días"
+    },
+    "leaves_and_permits": [
+      {"type": "Licencia por Maternidad", "days": 98, "paid": true, "notes": "49 pre y 49 post parto"},
+      {"type": "Licencia por Paternidad", "days": 10, "paid": true, "notes": "Desde el nacimiento"},
+      {"type": "Licencia por Matrimonio", "days": 5, "paid": true, "notes": "Dentro de los 15 días de celebrado"},
+      {"type": "Licencia por Fallecimiento Familiar Directo", "days": 5, "paid": true, "notes": "Cónyuge, hijos, padres"},
+      {"type": "Licencia por Fallecimiento Familiar Indirecto", "days": 3, "paid": true, "notes": "Hermanos, abuelos"},
+      {"type": "Permiso Médico con CMP", "days": "Según indicación médica", "paid": true, "notes": "Requiere certificado del ESSALUD o médico autorizado"},
+      {"type": "Permiso Personal", "hours": 4, "paid": false, "notes": "Máximo 2 veces al mes, requiere compensación de horas"}
+    ],
+    "onboarding": {
+      "duration_days": 15,
+      "stages": [
+        {"day": "Día 1", "activities": ["Recepción por RR.HH.", "Firma de contrato y NDA", "Entrega de equipos", "Credenciales de acceso", "Recorrido por instalaciones"]},
+        {"day": "Días 2-5", "activities": ["Inducción corporativa (misión, visión, valores, organigrama)", "Inducción técnica con el área", "Capacitación en herramientas internas", "Presentación con equipo directo"]},
+        {"day": "Días 6-10", "activities": ["Shadowing con colega asignado", "Acceso completo a sistemas", "Reunión con Gerente de área"]},
+        {"day": "Días 11-15", "activities": ["Asignación de primeras tareas", "Evaluación de inducción", "Reunión de cierre con RR.HH."]}
+      ],
+      "buddy_program": true,
+      "buddy_duration_days": 30,
+      "equipment_delivered": ["Laptop corporativa", "Teléfono IP de escritorio", "Credencial de acceso físico", "Kit de bienvenida Nexus"]
+    },
+    "performance_evaluation": {
+      "frequency": "Semestral",
+      "periods": [
+        {"name": "Evaluación Mid-Year", "evaluation_months": "Junio-Julio", "results_month": "Agosto"},
+        {"name": "Evaluación Year-End", "evaluation_months": "Noviembre-Diciembre", "results_month": "Enero"}
+      ],
+      "methodology": "180 grados (autoevaluación + evaluación del jefe directo)",
+      "scale": "1 a 5 (1=Necesita mejorar, 3=Cumple expectativas, 5=Supera expectativas)",
+      "dimensions": ["Cumplimiento de objetivos", "Competencias técnicas", "Trabajo en equipo", "Iniciativa e innovación", "Comunicación"],
+      "platform": "intranet.nexussoluciones.pe/evaluacion",
+      "tied_to_salary_review": true,
+      "tied_to_promotions": true
+    },
+    "compensation": {
+      "salary_review_frequency": "Anual (Enero)",
+      "salary_bands_exist": true,
+      "bonus_structure": "Bono de desempeño anual: hasta 1.5 sueldos según resultado de evaluación",
+      "gratificaciones": "Julio y Diciembre (1 sueldo cada una, por ley)",
+      "cts": "Depositada en Mayo y Noviembre",
+      "essalud": "9% a cargo de la empresa",
+      "afp_o_onp": "A elección del trabajador al ingreso"
+    },
+    "training_development": {
+      "annual_budget_per_employee_soles": 1500,
+      "platform_elearning": "Nexus Academy (intranet.nexussoluciones.pe/academy)",
+      "external_training_approval": "Jefe directo + RR.HH. + CFO si supera S/. 800",
+      "certifications_paid_by_company": ["AWS", "Azure", "Scrum Master", "PMP", "ISO 27001 Lead Implementer"],
+      "commitment_after_training_months": 12,
+      "english_classes": "Martes y Jueves 7:00-8:00 am, modalidad virtual, gratuito para todos los colaboradores"
+    },
+    "wellness": {
+      "health_insurance": "EPS RIMAC (cobertura 70% empresa, 30% colaborador)",
+      "life_insurance": true,
+      "gym_subsidy_soles_monthly": 80,
+      "birthday_day_off": true,
+      "psychological_support": "2 sesiones mensuales gratuitas con psicólogo de convenio",
+      "cafeteria": "Disponible en San Isidro, subvencionada al 50% por la empresa"
+    },
+    "remote_work_policy": {
+      "modality": "Híbrido",
+      "remote_days_per_week": 2,
+      "eligible_from_month": 3,
+      "request_process": "Acuerdo con jefe directo, registrado en intranet",
+      "requirements": ["Conexión a internet mínimo 25 Mbps", "Espacio privado y adecuado", "Disponibilidad en horario laboral", "VPN activa para acceso a sistemas"],
+      "equipment_home": "La empresa provee monitor externo previa solicitud a TI",
+      "not_applicable_roles": ["Personal de soporte presencial", "Roles que requieran acceso físico a equipos"]
+    },
+    "code_of_conduct": {
+      "dress_code": "Smart casual de lunes a jueves. Casual el viernes.",
+      "dress_code_client": "Formal o smart formal en visitas a clientes",
+      "conflict_of_interest": "Declaración anual obligatoria de conflictos de interés al área Legal",
+      "anti_corruption": "Prohibición absoluta de aceptar regalos superiores a S/. 50 de proveedores o clientes",
+      "social_media": "No publicar información de proyectos, clientes ni datos internos en redes sociales",
+      "disciplinary_process": ["Amonestación verbal", "Amonestación escrita", "Suspensión sin goce de haber (1-5 días)", "Despido por causa justificada"],
+      "whistleblower_channel": "denuncias@nexussoluciones.pe (anónimo) o línea ética: 0800-00-555"
+    },
+    "health_safety": {
+      "responsible": "Comité de Seguridad y Salud en el Trabajo",
+      "committee_head": "Marco Huanca Soto (TI) como representante de la empresa",
+      "worker_representative": "Elegido anualmente por los colaboradores",
+      "annual_drills": 2,
+      "first_aid_kits_locations": ["Recepción San Isidro", "Piso 9 San Isidro", "Recepción Miraflores"],
+      "aed_location": "Recepción San Isidro, Piso 8",
+      "emergency_exits": ["Escaleras de emergencia: acceso por pasillo central cada piso", "Punto de reunión: Estacionamiento B1"],
+      "occupational_health_exams": "Anuales, coordinados por RR.HH. en Febrero"
+    }
+  },
+
+  "it_policies": {
+    "equipment": {
+      "laptop_model_standard": "Lenovo ThinkPad E14 Gen 4 o Dell Latitude 5540",
+      "os": "Windows 11 Pro (imagen corporativa)",
+      "laptop_assignment": "Personal a los 3 días del ingreso",
+      "laptop_responsibility": "El colaborador es responsable del equipo asignado",
+      "personal_use": "Permitido uso personal moderado fuera del horario laboral",
+      "prohibited_software": ["Software de torrents", "Criptomonedas/minería", "VPNs no autorizadas", "Software sin licencia"],
+      "antivirus": "CrowdStrike Falcon (instalación automática, no desinstalar)",
+      "encryption": "BitLocker habilitado en todos los equipos corporativos"
+    },
+    "accounts_access": {
+      "email_format": "nombre.apellido@nexussoluciones.pe",
+      "password_policy": {
+        "min_length": 12,
+        "requires_uppercase": true,
+        "requires_numbers": true,
+        "requires_special_chars": true,
+        "expiry_days": 90,
+        "no_reuse_last_n": 6
+      },
+      "mfa_required": true,
+      "mfa_method": "Microsoft Authenticator",
+      "vpn": "Cisco AnyConnect — requerido para acceso a sistemas internos desde fuera de la oficina",
+      "vpn_request": "helpdesk@nexussoluciones.pe con aprobación del jefe directo",
+      "access_request_form": "intranet.nexussoluciones.pe/solicitudes-ti"
+    },
+    "authorized_tools": {
+      "communication": ["Microsoft Teams", "Outlook"],
+      "project_management": ["Jira", "Confluence"],
+      "code_repositories": ["GitLab interno (gitlab.nexussoluciones.pe)", "GitHub (solo repos autorizados)"],
+      "cloud_storage": ["SharePoint corporativo", "OneDrive personal"],
+      "prohibited_cloud_storage": ["Google Drive personal", "Dropbox", "WeTransfer para info sensible"],
+      "video_conferencing": ["Microsoft Teams", "Zoom (con cuenta corporativa)"],
+      "ai_tools": "Uso de herramientas de IA generativa con datos de clientes está PROHIBIDO. Para proyectos internos requiere aprobación del CISO."
+    },
+    "incident_management": {
+      "definition_incident": "Cualquier evento que afecte la disponibilidad, confidencialidad o integridad de sistemas o datos.",
+      "severity_levels": [
+        {
+          "level": "P1 - Crítico",
+          "description": "Sistema productivo caído, brecha de seguridad confirmada, pérdida de datos de cliente",
+          "response_time_minutes": 15,
+          "resolution_time_hours": 4,
+          "notify": ["CISO", "CTO", "Gerente General"]
+        },
+        {
+          "level": "P2 - Alto",
+          "description": "Degradación significativa de servicio, sospecha de intrusión, acceso no autorizado",
+          "response_time_minutes": 30,
+          "resolution_time_hours": 8,
+          "notify": ["CISO", "CTO"]
+        },
+        {
+          "level": "P3 - Medio",
+          "description": "Problema de acceso individual, fallo de equipo, error en aplicación interna",
+          "response_time_minutes": 120,
+          "resolution_time_hours": 24,
+          "notify": ["Líder de Infraestructura"]
+        },
+        {
+          "level": "P4 - Bajo",
+          "description": "Consultas, solicitudes de acceso, instalación de software",
+          "response_time_hours": 8,
+          "resolution_time_hours": 48,
+          "notify": ["Mesa de ayuda"]
+        }
+      ],
+      "report_channel": "helpdesk@nexussoluciones.pe o ext. 300",
+      "ticket_system": "Jira Service Management (jira.nexussoluciones.pe/servicedesk)",
+      "post_incident_report_required_for": ["P1", "P2"]
+    },
+    "data_classification": [
+      {
+        "level": "Confidencial",
+        "description": "Datos de clientes, contratos, información financiera, código fuente de proyectos",
+        "handling": "Solo acceso con necesidad de negocio justificada, no enviar por canales no cifrados, no almacenar en dispositivos personales"
+      },
+      {
+        "level": "Interno",
+        "description": "Políticas internas, documentación de procesos, comunicaciones internas",
+        "handling": "Solo para uso de colaboradores de Nexus, no compartir externamente sin aprobación"
+      },
+      {
+        "level": "Público",
+        "description": "Material de marketing, información publicada en web corporativa",
+        "handling": "Sin restricciones de distribución"
+      }
+    ],
+    "client_data_policy": {
+      "storage": "Solo en infraestructura autorizada por el cliente (on-premise del cliente o cloud acordado)",
+      "no_copy_to_personal": true,
+      "deletion_after_project": "Dentro de los 30 días de cierre de contrato, con acta de destrucción",
+      "access_log_required": true,
+      "breach_notification_hours": 72,
+      "breach_notify_to": ["DPO", "Cliente", "INDECOPI si aplica"]
+    }
+  },
+
+  "procurement_policy": {
+    "thresholds": [
+      {
+        "range": "Hasta S/. 500",
+        "approval": "Jefe de área",
+        "process": "Solicitud verbal o email, ticket en Jira",
+        "po_required": false
+      },
+      {
+        "range": "S/. 501 a S/. 2,000",
+        "approval": "Jefe de área + Analista de Compras",
+        "process": "Formulario en intranet + 2 cotizaciones",
+        "po_required": true
+      },
+      {
+        "range": "S/. 2,001 a S/. 10,000",
+        "approval": "CFO",
+        "process": "Formulario en intranet + 3 cotizaciones + sustento técnico",
+        "po_required": true
+      },
+      {
+        "range": "Mayor a S/. 10,000",
+        "approval": "Gerente General",
+        "process": "Proceso de licitación interna + informe de evaluación + aprobación en comité",
+        "po_required": true
+      }
+    ],
+    "preferred_suppliers": "Lista en intranet.nexussoluciones.pe/proveedores-homologados",
+    "payment_terms": {
+      "standard": "30 días desde factura",
+      "with_discount": "15 días con descuento del 2%"
+    },
+    "contact": "c.villacorta@nexussoluciones.pe / ext. 602"
+  },
+
+  "expenses_travel_policy": {
+    "per_diem_rates": {
+      "lima_daily_lunch_soles": 35,
+      "provinces_daily_soles": 120,
+      "international_daily_usd": 80
+    },
+    "transport": {
+      "taxi_app_authorized": ["Uber", "Cabify (cuenta corporativa)"],
+      "taxi_max_per_trip_soles": 60,
+      "flight_class": "Económica siempre, salvo viajes mayores a 8 horas",
+      "hotel_max_lima_per_night_soles": 280,
+      "hotel_max_provinces_per_night_soles": 220,
+      "hotel_max_international_per_night_usd": 150
+    },
+    "reimbursement_process": {
+      "deadline_days_after_trip": 5,
+      "form": "intranet.nexussoluciones.pe/reembolsos",
+      "requires_receipts": true,
+      "approver": "Jefe directo + Finanzas",
+      "payment_days": 7
+    },
+    "advance_travel": {
+      "available": true,
+      "max_advance_soles": 500,
+      "request_advance_days": 3,
+      "settlement_days_after_return": 3
+    },
+    "not_reimbursable": ["Alcohol", "Entretenimiento personal", "Gastos de acompañantes", "Multas de tránsito"]
+  },
+
+  "facilities_policy": {
+    "meeting_rooms": {
+      "san_isidro_rooms": [
+        {"name": "Sala Arequipa", "capacity": 8, "floor": 8, "equipment": ["TV 65'", "Videoconferencia", "Pizarra"]},
+        {"name": "Sala Cusco", "capacity": 12, "floor": 8, "equipment": ["Proyector", "Videoconferencia", "Pizarra"]},
+        {"name": "Sala Lima", "capacity": 20, "floor": 9, "equipment": ["Proyector 4K", "Sistema de audio", "Videoconferencia", "Pizarra doble"]},
+        {"name": "Sala Trujillo", "capacity": 6, "floor": 9, "equipment": ["TV 55'", "Pizarra"]}
+      ],
+      "booking_system": "Microsoft Outlook / Teams — calendario de recursos",
+      "max_advance_booking_days": 14,
+      "max_duration_hours": 4,
+      "overtime_rule": "Liberar sala si no hay uso tras 15 minutos de la hora de inicio"
+    },
+    "common_areas": {
+      "cafeteria_hours": "07:30 - 19:00 Lun-Vie",
+      "gym_hours": "06:30 - 08:30 y 18:00 - 20:00 Lun-Vie",
+      "parking_assignment": "Por antigüedad y rol. Lista administrada por Administración",
+      "lockers": "Disponibles en piso 8 y 9, asignados por RR.HH."
+    },
+    "visitors": {
+      "registration": "Todos los visitantes deben registrarse en recepción con DNI",
+      "badge": "Credencial de visitante obligatoria durante toda la visita",
+      "escort_required": true,
+      "no_access_zones": ["Sala de servidores (Piso 9)", "Archivo confidencial (Piso 8)"]
+    }
+  },
+
+  "documents_to_generate": [
+    {
+      "doc_id": "D01",
+      "title": "Manual de Bienvenida — Nexus Soluciones S.A.C.",
+      "type": "RR.HH.",
+      "key_facts_used": ["company", "leadership", "departments", "hr_policies.wellness", "hr_policies.work_schedule"],
+      "pages_approx": 8,
+      "audience": "Todo colaborador nuevo",
+      "lda_topic_expected": "Bienvenida e identidad corporativa"
+    },
+    {
+      "doc_id": "D02",
+      "title": "Procedimiento de Onboarding de Nuevos Colaboradores",
+      "type": "RR.HH.",
+      "key_facts_used": ["hr_policies.onboarding", "departments.RRHH", "it_policies.equipment", "it_policies.accounts_access"],
+      "pages_approx": 7,
+      "audience": "RR.HH. y jefes directos",
+      "lda_topic_expected": "Incorporación de personal"
+    },
+    {
+      "doc_id": "D03",
+      "title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "RR.HH.",
+      "key_facts_used": ["hr_policies.vacations", "hr_policies.leaves_and_permits", "hr_policies.work_schedule"],
+      "pages_approx": 6,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Tiempo libre y ausencias"
+    },
+    {
+      "doc_id": "D04",
+      "title": "Política de Trabajo Remoto e Híbrido",
+      "type": "RR.HH.",
+      "key_facts_used": ["hr_policies.remote_work_policy", "it_policies.accounts_access.vpn", "hr_policies.work_schedule"],
+      "pages_approx": 5,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Modalidad de trabajo"
+    },
+    {
+      "doc_id": "D05",
+      "title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "RR.HH.",
+      "key_facts_used": ["hr_policies.performance_evaluation", "hr_policies.compensation", "hr_policies.training_development"],
+      "pages_approx": 8,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Evaluación y compensación"
+    },
+    {
+      "doc_id": "D06",
+      "title": "Código de Conducta y Ética Empresarial",
+      "type": "RR.HH. / Legal",
+      "key_facts_used": ["hr_policies.code_of_conduct", "it_policies.client_data_policy", "company.values"],
+      "pages_approx": 9,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Ética y conducta"
+    },
+    {
+      "doc_id": "D07",
+      "title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "RR.HH.",
+      "key_facts_used": ["hr_policies.training_development", "hr_policies.performance_evaluation", "hr_policies.compensation"],
+      "pages_approx": 6,
+      "audience": "Todos los colaboradores y jefes",
+      "lda_topic_expected": "Capacitación y desarrollo"
+    },
+    {
+      "doc_id": "D08",
+      "title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "SST",
+      "key_facts_used": ["hr_policies.health_safety", "facilities_policy.common_areas", "facilities_policy.facilities_policy"],
+      "pages_approx": 10,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Seguridad y salud laboral"
+    },
+    {
+      "doc_id": "D09",
+      "title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "TI",
+      "key_facts_used": ["it_policies.equipment", "it_policies.accounts_access", "it_policies.authorized_tools", "it_policies.data_classification"],
+      "pages_approx": 9,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Seguridad informática"
+    },
+    {
+      "doc_id": "D10",
+      "title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "TI",
+      "key_facts_used": ["it_policies.incident_management", "departments.TI", "it_policies.data_classification"],
+      "pages_approx": 7,
+      "audience": "TI y todos los colaboradores",
+      "lda_topic_expected": "Gestión de incidentes"
+    },
+    {
+      "doc_id": "D11",
+      "title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "Legal / TI",
+      "key_facts_used": ["it_policies.client_data_policy", "it_policies.data_classification", "departments.LEGAL"],
+      "pages_approx": 8,
+      "audience": "Todos los colaboradores con acceso a datos de clientes",
+      "lda_topic_expected": "Protección de datos"
+    },
+    {
+      "doc_id": "D12",
+      "title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "Administración",
+      "key_facts_used": ["procurement_policy", "departments.ADMIN"],
+      "pages_approx": 7,
+      "audience": "Jefes de área y personal con poder de compra",
+      "lda_topic_expected": "Compras y proveedores"
+    },
+    {
+      "doc_id": "D13",
+      "title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "Administración",
+      "key_facts_used": ["expenses_travel_policy", "departments.ADMIN", "procurement_policy.payment_terms"],
+      "pages_approx": 6,
+      "audience": "Todos los colaboradores que viajan o incurren en gastos de empresa",
+      "lda_topic_expected": "Gastos y viáticos"
+    },
+    {
+      "doc_id": "D14",
+      "title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "Administración",
+      "key_facts_used": ["facilities_policy", "hr_policies.health_safety"],
+      "pages_approx": 6,
+      "audience": "Todos los colaboradores y visitantes",
+      "lda_topic_expected": "Instalaciones y espacios"
+    },
+    {
+      "doc_id": "D15",
+      "title": "Directorio Corporativo y Organigrama — Nexus Soluciones S.A.C.",
+      "type": "Organizacional",
+      "key_facts_used": ["leadership", "departments"],
+      "pages_approx": 4,
+      "audience": "Todos los colaboradores",
+      "lda_topic_expected": "Organización y contactos"
+    }
+  ],
+
+  "qa_evaluation_notes": {
+    "total_pairs_target": 75,
+    "pairs_per_doc": 5,
+    "question_types": [
+      "Factual directo (¿Cuántos días de vacaciones tiene un colaborador?)",
+      "Procedimental (¿Cómo solicito un reembolso de gastos?)",
+      "Condicional (¿Qué ocurre si no liquido mi anticipo de viaje en 3 días?)",
+      "Contacto (¿A quién contacto para problemas de TI?)",
+      "Normativo (¿Qué software está prohibido instalar en el equipo corporativo?)"
+    ],
+    "ground_truth_derivation": "Todas las respuestas se derivan directamente de los campos de este JSON, no de los documentos generados. Metodología RIKER."
+  },
+
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-06-10",
+    "methodology": "RIKER — Ground truth defined before document generation",
+    "reference_paper": "arxiv:2601.08847",
+    "project": "PrivaceCheck — PLN Proyecto de Curso 2026-1",
+    "language": "Spanish",
+    "corpus_type": "Hybrid (synthetic + real public documents)"
+  }
+}

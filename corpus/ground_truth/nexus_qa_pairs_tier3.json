@@ -1,0 +1,426 @@
+{
+  "metadata": {
+    "project": "PrivaceCheck — PLN Proyecto de Curso 2026-1",
+    "methodology": "RIKER — Tier-3 extension. Respuestas derivadas de nexus_ground_truth_tier3.json",
+    "extension_of": "nexus_qa_pairs.json",
+    "tier": "Tier-3 (información comercial, técnica y de IA confidencial)",
+    "total_pairs": 40,
+    "pairs_per_doc": 5,
+    "question_types": ["factual", "procedural", "conditional", "contact", "normative"],
+    "language": "Spanish",
+    "created": "2026-06-24",
+    "gt_source": "nexus_ground_truth_tier3.json v1.0",
+    "purpose_for_paper": "Cubre dominio Tier-3 con vocabulario propietario para evaluar ganancia diferencial de fine-tuning sobre RAG puro"
+  },
+  "qa_pairs": [
+
+    {
+      "id": "QA-D16-01",
+      "doc_id": "D16",
+      "doc_title": "Modelo de Pricing y Tarifario Profesional",
+      "type": "factual",
+      "question": "¿Cuál es la tarifa hora estándar en soles de un Desarrollador Senior en Nexus?",
+      "answer": "La tarifa hora estándar de un Desarrollador Senior es de S/. 110.",
+      "gt_field": "commercial_policies.pricing_model.hourly_rates_pen.Desarrollador_Senior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D16-02",
+      "doc_id": "D16",
+      "doc_title": "Modelo de Pricing y Tarifario Profesional",
+      "type": "normative",
+      "question": "¿Cuál es el margen mínimo aceptable para un proyecto bajo modalidad Fixed Price?",
+      "answer": "El margen mínimo aceptable bajo modalidad Fixed Price es 42%.",
+      "gt_field": "commercial_policies.pricing_model.minimum_margin.fixed_price",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D16-03",
+      "doc_id": "D16",
+      "doc_title": "Modelo de Pricing y Tarifario Profesional",
+      "type": "conditional",
+      "question": "Si un cliente del sector Banca y Finanzas solicita un Software Architect, ¿cuál es la tarifa hora final aplicando el premium de industria?",
+      "answer": "La tarifa base del Software Architect es S/. 180 y el premium de industria para Banca y Finanzas es 15%. La tarifa final es S/. 207 por hora.",
+      "gt_field": "commercial_policies.pricing_model.hourly_rates_pen.Software_Architect + industry_premium.Banca_y_Finanzas",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D16-04",
+      "doc_id": "D16",
+      "doc_title": "Modelo de Pricing y Tarifario Profesional",
+      "type": "procedural",
+      "question": "¿Quién está autorizado a aprobar un descuento del 8% sobre la tarifa estándar?",
+      "answer": "Un descuento del 8% requiere aprobación del CEO. La Gerencia Comercial solo puede aprobar hasta 5%, y descuentos mayores al 10% requieren aprobación del Directorio.",
+      "gt_field": "commercial_policies.pricing_model.discount_authority",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D16-05",
+      "doc_id": "D16",
+      "doc_title": "Modelo de Pricing y Tarifario Profesional",
+      "type": "conditional",
+      "question": "¿Qué recargo aplica Nexus por trabajos realizados durante fines de semana?",
+      "answer": "El recargo por trabajos en fines de semana es del 100% sobre la tarifa estándar.",
+      "gt_field": "commercial_policies.pricing_model.off_hours_surcharge.fines_de_semana",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D17-01",
+      "doc_id": "D17",
+      "doc_title": "Playbook de Propuestas Comerciales y RFP",
+      "type": "factual",
+      "question": "¿Cuál es el SLA interno de respuesta a un RFP por un monto menor a S/. 200,000?",
+      "answer": "El SLA interno de respuesta a un RFP menor a S/. 200,000 es de 5 días hábiles.",
+      "gt_field": "commercial_policies.rfp_playbook.rfp_response_sla_days.menor_a_200k",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D17-02",
+      "doc_id": "D17",
+      "doc_title": "Playbook de Propuestas Comerciales y RFP",
+      "type": "procedural",
+      "question": "¿Cuáles son las etapas del pipeline comercial de Nexus?",
+      "answer": "El pipeline comercial estandarizado tiene siete etapas: Lead, Qualify, Discovery, Propuesta, Negociación, Cierre y Handoff a Delivery.",
+      "gt_field": "commercial_policies.rfp_playbook.pipeline_stages",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D17-03",
+      "doc_id": "D17",
+      "doc_title": "Playbook de Propuestas Comerciales y RFP",
+      "type": "conditional",
+      "question": "¿Qué nivel de aprobación se requiere para una propuesta comercial de S/. 350,000?",
+      "answer": "Una propuesta de S/. 350,000 requiere aprobación del CEO, ya que el rango de aprobación del CEO es de S/. 100,000 a S/. 500,000.",
+      "gt_field": "commercial_policies.rfp_playbook.approval_thresholds_pen",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D17-04",
+      "doc_id": "D17",
+      "doc_title": "Playbook de Propuestas Comerciales y RFP",
+      "type": "normative",
+      "question": "¿Cuáles son los red flags contractuales que Nexus identifica al revisar un contrato?",
+      "answer": "Los red flags contractuales son: penalidades superiores al 10% del valor del contrato, cesión irrestricta de propiedad intelectual, jurisdicción extranjera sin cláusula de arbitraje, exclusividad no compensada e indemnización ilimitada.",
+      "gt_field": "commercial_policies.rfp_playbook.contractual_red_flags",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D17-05",
+      "doc_id": "D17",
+      "doc_title": "Playbook de Propuestas Comerciales y RFP",
+      "type": "procedural",
+      "question": "¿Qué criterios se evalúan en la matriz Go/No-Go para una propuesta?",
+      "answer": "La matriz Go/No-Go evalúa ocho criterios: encaje técnico con el stack aprobado, margen estimado mínimo por modalidad, riesgo país y solvencia del cliente, capacidad disponible, alineación con sectores foco, términos contractuales aceptables, existencia de referencia previa, y probabilidad de cierre igual o mayor a 30%.",
+      "gt_field": "commercial_policies.rfp_playbook.go_no_go_criteria",
+      "difficulty": "hard"
+    },
+
+    {
+      "id": "QA-D18-01",
+      "doc_id": "D18",
+      "doc_title": "Cartera de Clientes Activos y Maestro de Contratos",
+      "type": "factual",
+      "question": "¿Cuál es el cliente con mayor contrato anual de Nexus y por qué monto?",
+      "answer": "El cliente con mayor contrato anual es Banco Andino del Perú, con un contrato anual de S/. 1,850,000.",
+      "gt_field": "commercial_policies.client_portfolio.top_clients_2026[0]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D18-02",
+      "doc_id": "D18",
+      "doc_title": "Cartera de Clientes Activos y Maestro de Contratos",
+      "type": "contact",
+      "question": "¿Quién es el sponsor ejecutivo de Nexus para la cuenta de Clínica San Borja?",
+      "answer": "El sponsor ejecutivo Nexus para Clínica San Borja es Andrés Flores Castillo (CTO).",
+      "gt_field": "commercial_policies.client_portfolio.top_clients_2026[2].sponsor_nexus",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D18-03",
+      "doc_id": "D18",
+      "doc_title": "Cartera de Clientes Activos y Maestro de Contratos",
+      "type": "conditional",
+      "question": "¿Qué contratos del top 10 vencen durante el año 2026?",
+      "answer": "Dos contratos del top vencen en 2026: Retail Norte SAC (vence el 31-12-2026), Clínica San Borja (vence el 30-06-2026) y MicroFinanzas Inka (vence el 31-08-2026).",
+      "gt_field": "commercial_policies.client_portfolio.top_clients_2026[*].renewal_date",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D18-04",
+      "doc_id": "D18",
+      "doc_title": "Cartera de Clientes Activos y Maestro de Contratos",
+      "type": "normative",
+      "question": "¿Cuál es el umbral de alerta para concentración de ingresos por un solo cliente?",
+      "answer": "El umbral de alerta de concentración de ingresos por un solo cliente es 25%. Actualmente la concentración del top cliente es 20.1%.",
+      "gt_field": "commercial_policies.client_portfolio.revenue_concentration_alert_pct",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D18-05",
+      "doc_id": "D18",
+      "doc_title": "Cartera de Clientes Activos y Maestro de Contratos",
+      "type": "factual",
+      "question": "¿Cuáles son los riesgos comerciales abiertos en la cartera de clientes?",
+      "answer": "Los riesgos comerciales abiertos son: renovación en riesgo de Clínica San Borja por demoras en proyecto HIS; cliente moroso MicroFinanzas Inka con 45 días de atraso en última factura; y disputa activa con Retail Norte SAC por reclamo de 3 incumplimientos SLA en el Q1-2026.",
+      "gt_field": "commercial_policies.client_portfolio.open_commercial_risks",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D19-01",
+      "doc_id": "D19",
+      "doc_title": "Arquitecturas de Referencia y Estándares Técnicos",
+      "type": "factual",
+      "question": "¿Cuál es el cloud provider primario aprobado por Nexus?",
+      "answer": "El cloud provider primario aprobado por Nexus es AWS. Azure es secundario y GCP solo se usa por excepción.",
+      "gt_field": "technical_standards.approved_stack.cloud_primary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D19-02",
+      "doc_id": "D19",
+      "doc_title": "Arquitecturas de Referencia y Estándares Técnicos",
+      "type": "normative",
+      "question": "¿Qué licencias open source están prohibidas en código entregable al cliente?",
+      "answer": "Las licencias prohibidas en código entregable son GPL-2.0, GPL-3.0 y AGPL-3.0. LGPL y MPL-2.0 requieren revisión previa. Las licencias permitidas sin restricción son MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause e ISC.",
+      "gt_field": "technical_standards.oss_license_policy",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D19-03",
+      "doc_id": "D19",
+      "doc_title": "Arquitecturas de Referencia y Estándares Técnicos",
+      "type": "normative",
+      "question": "¿Cuál es el estándar mínimo de seguridad de código que Nexus exige?",
+      "answer": "Nexus exige cumplir como mínimo el OWASP ASVS Nivel 2. Además, SAST en CI es obligatorio en todos los repos, DAST es obligatorio antes de release, y el escaneo de dependencias debe hacerse con Snyk o Dependabot.",
+      "gt_field": "technical_standards.security_standards",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D19-04",
+      "doc_id": "D19",
+      "doc_title": "Arquitecturas de Referencia y Estándares Técnicos",
+      "type": "procedural",
+      "question": "¿Cuáles son los patrones técnicos obligatorios en todo servicio productivo de Nexus?",
+      "answer": "Los patrones obligatorios son: autenticación con OAuth 2.0 + OIDC, logging estructurado en JSON con correlation_id, observabilidad con OpenTelemetry, y gestión de secretos en HashiCorp Vault o AWS Secrets Manager (queda prohibido tener secretos en código o en variables de entorno en claro).",
+      "gt_field": "technical_standards.mandatory_patterns",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D19-05",
+      "doc_id": "D19",
+      "doc_title": "Arquitecturas de Referencia y Estándares Técnicos",
+      "type": "factual",
+      "question": "¿Qué establece el ADR-007 de Nexus?",
+      "answer": "El ADR-007 establece la adopción de arquitectura event-driven con Apache Kafka para integraciones bancarias. Su estado es Accepted y fue aprobado el 12 de agosto de 2024.",
+      "gt_field": "technical_standards.adr_examples[0]",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D20-01",
+      "doc_id": "D20",
+      "doc_title": "Catálogo de Post-Mortems y Lessons Learned",
+      "type": "factual",
+      "question": "¿Cuál es el MTTR promedio para incidentes de severidad P1 en Nexus?",
+      "answer": "El MTTR promedio para incidentes P1 es de 3.2 horas.",
+      "gt_field": "post_mortems.mttr_hours_by_severity.P1",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D20-02",
+      "doc_id": "D20",
+      "doc_title": "Catálogo de Post-Mortems y Lessons Learned",
+      "type": "factual",
+      "question": "¿Qué porcentaje de incidentes mayores tiene una causa raíz repetida?",
+      "answer": "El 22% de los incidentes mayores tiene una causa raíz que ya se había presentado en incidentes anteriores.",
+      "gt_field": "post_mortems.repeated_root_cause_pct",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D20-03",
+      "doc_id": "D20",
+      "doc_title": "Catálogo de Post-Mortems y Lessons Learned",
+      "type": "normative",
+      "question": "¿Cuáles son las top 5 causas raíz recurrentes identificadas por Nexus?",
+      "answer": "Las top 5 causas raíz recurrentes son: cambios en producción sin feature flag, falla de capacidad por crecimiento no anticipado, configuraciones incorrectas en cutover, dependencias de terceros sin contingencia, y gaps en pruebas de carga.",
+      "gt_field": "post_mortems.top_recurring_causes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D20-04",
+      "doc_id": "D20",
+      "doc_title": "Catálogo de Post-Mortems y Lessons Learned",
+      "type": "normative",
+      "question": "¿Bajo qué política se realizan los post-mortems en Nexus?",
+      "answer": "Los post-mortems se realizan bajo una política blameless, enfocada en aprendizaje y mejora del sistema, no en señalar responsables individuales.",
+      "gt_field": "post_mortems.blameless_policy",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D20-05",
+      "doc_id": "D20",
+      "doc_title": "Catálogo de Post-Mortems y Lessons Learned",
+      "type": "conditional",
+      "question": "¿Se puede compartir un post-mortem con el cliente afectado?",
+      "answer": "No de forma directa. Los post-mortems tienen distribución restringida al equipo del proyecto y al CTO; compartirlos con un cliente requiere aprobación previa de Comercial.",
+      "gt_field": "post_mortems.postmortem_confidentiality",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D21-01",
+      "doc_id": "D21",
+      "doc_title": "Runbook de Delivery / SDLC Interno",
+      "type": "factual",
+      "question": "¿Cuánto dura la fase de Hypercare en el SDLC de Nexus?",
+      "answer": "La fase de Hypercare tiene una duración fija de 4 semanas, con criterios de salida de cero incidentes P1 abiertos y handoff de KT a soporte completado.",
+      "gt_field": "delivery_sdlc.phases[5]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D21-02",
+      "doc_id": "D21",
+      "doc_title": "Runbook de Delivery / SDLC Interno",
+      "type": "procedural",
+      "question": "¿Cuáles son las fases del ciclo de delivery de Nexus y en qué orden?",
+      "answer": "El ciclo de delivery tiene seis fases en orden: Discovery (2 a 4 semanas), Design (2 a 6 semanas), Build (iterativo), Test (incluido en Build), Deploy (1 a 2 semanas) y Hypercare (4 semanas).",
+      "gt_field": "delivery_sdlc.phases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D21-03",
+      "doc_id": "D21",
+      "doc_title": "Runbook de Delivery / SDLC Interno",
+      "type": "normative",
+      "question": "¿Cuál es la duración mínima del Knowledge Transfer al equipo de soporte?",
+      "answer": "El Knowledge Transfer al equipo de soporte tiene una duración mínima obligatoria de 2 semanas.",
+      "gt_field": "delivery_sdlc.kt_minimum_weeks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D21-04",
+      "doc_id": "D21",
+      "doc_title": "Runbook de Delivery / SDLC Interno",
+      "type": "procedural",
+      "question": "¿Qué ceremonias Agile son obligatorias en proyectos de Nexus?",
+      "answer": "Las ceremonias obligatorias son: Daily de 15 minutos, Planning quincenal de 2 horas, Review quincenal de 1 hora, Retrospectiva quincenal de 1 hora y Refinement semanal de 1 hora.",
+      "gt_field": "delivery_sdlc.mandatory_ceremonies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D21-05",
+      "doc_id": "D21",
+      "doc_title": "Runbook de Delivery / SDLC Interno",
+      "type": "normative",
+      "question": "¿A qué niveles se define el Definition of Done en Nexus?",
+      "answer": "El Definition of Done se define a tres niveles: historia (story), sprint y release.",
+      "gt_field": "delivery_sdlc.definition_of_done_levels",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D22-01",
+      "doc_id": "D22",
+      "doc_title": "Gestión de Incidentes con Cliente y SLA",
+      "type": "factual",
+      "question": "¿Cuál es el tiempo máximo de respuesta para un incidente P1 con cliente?",
+      "answer": "El tiempo máximo de respuesta para un incidente P1 es de 15 minutos, y el de resolución es de 4 horas.",
+      "gt_field": "client_sla_management.severity_classification.P1",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D22-02",
+      "doc_id": "D22",
+      "doc_title": "Gestión de Incidentes con Cliente y SLA",
+      "type": "procedural",
+      "question": "¿Cuáles son los niveles de escalamiento de incidentes con cliente?",
+      "answer": "Los niveles de escalamiento son cuatro: L1 Soporte, L2 Ingeniería de Producto, L3 Arquitectura y Gerencia.",
+      "gt_field": "client_sla_management.escalation_levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D22-03",
+      "doc_id": "D22",
+      "doc_title": "Gestión de Incidentes con Cliente y SLA",
+      "type": "conditional",
+      "question": "¿Cuándo se debe activar un war room durante un incidente?",
+      "answer": "Se activa war room ante toda P1 que supere 1 hora sin avance, o ante una P2 que supere 4 horas.",
+      "gt_field": "client_sla_management.war_room_trigger",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D22-04",
+      "doc_id": "D22",
+      "doc_title": "Gestión de Incidentes con Cliente y SLA",
+      "type": "normative",
+      "question": "¿Para qué severidades es obligatorio entregar un post-mortem y en qué plazo?",
+      "answer": "El post-mortem es obligatorio para incidentes de severidad P1 y P2, con entrega en máximo 5 días hábiles desde la resolución.",
+      "gt_field": "client_sla_management.postmortem_required_for",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D22-05",
+      "doc_id": "D22",
+      "doc_title": "Gestión de Incidentes con Cliente y SLA",
+      "type": "factual",
+      "question": "¿Qué define un incidente como P2 según Nexus?",
+      "answer": "Un incidente P2 se define como una funcionalidad mayor afectada pero con workaround disponible. Tiene tiempo de respuesta de 30 minutos y tiempo de resolución de 8 horas.",
+      "gt_field": "client_sla_management.severity_classification.P2",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D23-01",
+      "doc_id": "D23",
+      "doc_title": "Política de Uso de IA, LLMs y Datos Confidenciales",
+      "type": "normative",
+      "question": "¿Cuáles son los cuatro niveles de clasificación de datos en Nexus?",
+      "answer": "Los cuatro niveles de clasificación de datos son: Público, Interno, Confidencial y Restringido.",
+      "gt_field": "ai_data_policy.data_classification_levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D23-02",
+      "doc_id": "D23",
+      "doc_title": "Política de Uso de IA, LLMs y Datos Confidenciales",
+      "type": "conditional",
+      "question": "¿Puedo usar ChatGPT público para procesar información Confidencial de un cliente?",
+      "answer": "No. La política de Nexus prohíbe usar ChatGPT público, Claude público o Copilot con información de nivel Confidencial. Para este nivel solo se permite el uso de la IA corporativa local de Nexus.",
+      "gt_field": "ai_data_policy.llm_usage_matrix.Confidencial",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D23-03",
+      "doc_id": "D23",
+      "doc_title": "Política de Uso de IA, LLMs y Datos Confidenciales",
+      "type": "procedural",
+      "question": "¿Cuál es el proceso para aprobar el uso de una nueva herramienta con IA embebida?",
+      "answer": "Se debe enviar una solicitud al CISO mediante ticket TI-IA. La respuesta se entrega en máximo 5 días hábiles e incluye revisión del DPA, política de retención y opciones de opt-out de entrenamiento del proveedor.",
+      "gt_field": "ai_data_policy.approval_process",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D23-04",
+      "doc_id": "D23",
+      "doc_title": "Política de Uso de IA, LLMs y Datos Confidenciales",
+      "type": "normative",
+      "question": "¿Qué usos de IA están explícitamente prohibidos en Nexus?",
+      "answer": "Quedan prohibidos: subir código de clientes a LLMs públicos, ingresar datos personales identificables (DNI, salud, financieros) a herramientas no aprobadas, compartir contratos o propuestas comerciales en LLMs externos, y usar herramientas con IA embebida no inventariadas por el CISO.",
+      "gt_field": "ai_data_policy.prohibited_use_cases",
+      "difficulty": "hard"
+    },
+    {
+      "id": "QA-D23-05",
+      "doc_id": "D23",
+      "doc_title": "Política de Uso de IA, LLMs y Datos Confidenciales",
+      "type": "factual",
+      "question": "¿Con qué frecuencia se audita el uso de herramientas de IA en Nexus?",
+      "answer": "La auditoría del uso de IA es trimestral y la realiza el CISO. Adicionalmente se entrega un reporte anual al Directorio.",
+      "gt_field": "ai_data_policy.audit_frequency",
+      "difficulty": "easy"
+    }
+
+  ]
+}

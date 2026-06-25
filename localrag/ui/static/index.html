@@ -12,6 +12,13 @@
         <div class="panel chat-panel">
             <div class="panel-header">
                 <h1>LocalRAG</h1>
+                <select id="roleSelect" title="Rol del usuario (controla el acceso a documentos)">
+                    <option value="colaborador_general">Colaborador general (Tier-1)</option>
+                    <option value="mando_medio">Mando medio (Tier-1/2)</option>
+                    <option value="comercial_senior">Comercial senior (+Tier-3 comercial)</option>
+                    <option value="tecnico_senior">Técnico senior (+Tier-3 técnico)</option>
+                    <option value="gerencia">Gerencia (todos)</option>
+                </select>
                 <span class="status-dot" id="statusDot"></span>
             </div>
             <div class="messages" id="messages">

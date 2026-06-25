@@ -1,0 +1,209 @@
+{
+  "_meta": {
+    "extension_of": "nexus_ground_truth.json",
+    "version": "1.0",
+    "created": "2026-06-24",
+    "description": "Extensión Tier-3 del ground truth de Nexus Soluciones S.A.C. Cubre los documentos D16–D23 (información comercial, técnica y de IA confidencial).",
+    "classification": "CONFIDENCIAL — sintético para uso académico"
+  },
+
+  "commercial_policies": {
+    "pricing_model": {
+      "currency_base": "PEN",
+      "hourly_rates_pen": {
+        "Desarrollador_Junior": 45,
+        "Desarrollador_Semi_Senior": 75,
+        "Desarrollador_Senior": 110,
+        "Tech_Lead": 145,
+        "Software_Architect": 180,
+        "QA_Junior": 40,
+        "QA_Senior": 95,
+        "Project_Manager": 130,
+        "Consultor_Senior": 160,
+        "Consultor_Principal": 210
+      },
+      "internal_ctc_pen": {
+        "Desarrollador_Junior": 28,
+        "Desarrollador_Semi_Senior": 46,
+        "Desarrollador_Senior": 68,
+        "Tech_Lead": 92,
+        "Software_Architect": 115,
+        "Consultor_Senior": 102,
+        "Consultor_Principal": 140
+      },
+      "minimum_margin": {
+        "time_and_materials": 0.38,
+        "fixed_price": 0.42,
+        "staff_augmentation": 0.28
+      },
+      "discount_authority": {
+        "gerente_comercial_max_pct": 5,
+        "ceo_max_pct": 10,
+        "directorio_required_above_pct": 10
+      },
+      "industry_premium": {
+        "Banca_y_Finanzas": 0.15,
+        "Salud": 0.12,
+        "Seguros": 0.10,
+        "Retail": 0.05
+      },
+      "off_hours_surcharge": {
+        "fuera_de_horario": 0.50,
+        "fines_de_semana": 1.00,
+        "emergencia_inmediata": 1.50
+      },
+      "rate_review_cycle": "Anual cada enero; extraordinaria si IPC acumulado >5% o tipo de cambio USD>4.20"
+    },
+
+    "rfp_playbook": {
+      "pipeline_stages": ["Lead", "Qualify", "Discovery", "Propuesta", "Negociación", "Cierre", "Handoff"],
+      "rfp_response_sla_days": {
+        "menor_a_200k": 5,
+        "mayor_a_200k": 10
+      },
+      "approval_thresholds_pen": {
+        "gerente_comercial_max": 100000,
+        "ceo_max": 500000,
+        "directorio_required_above": 500000
+      },
+      "go_no_go_criteria": [
+        "Encaje técnico con stack aprobado",
+        "Margen estimado >= mínimo por modalidad",
+        "Riesgo país y solvencia del cliente",
+        "Capacidad disponible en el período",
+        "Alineación estratégica con sector foco",
+        "Términos contractuales aceptables",
+        "Existencia de referencia o caso previo",
+        "Probabilidad estimada de cierre >= 30%"
+      ],
+      "contractual_red_flags": [
+        "Penalidades superiores al 10% del valor del contrato",
+        "Cesión irrestricta de propiedad intelectual",
+        "Jurisdicción extranjera sin cláusula de arbitraje",
+        "Exclusividad no compensada",
+        "Indemnización ilimitada"
+      ]
+    },
+
+    "client_portfolio": {
+      "top_clients_2026": [
+        {"name": "Banco Andino del Perú", "sector": "Banca y Finanzas", "annual_contract_pen": 1850000, "sponsor_nexus": "Carlos Amat y León Ríos", "contract_start": "2022-04-01", "renewal_date": "2027-03-31", "sla_uptime": 0.997, "penalty_per_breach_pct": 8},
+        {"name": "Retail Norte SAC", "sector": "Retail", "annual_contract_pen": 1240000, "sponsor_nexus": "Patricia Quispe Huamán", "contract_start": "2023-01-15", "renewal_date": "2026-12-31", "sla_uptime": 0.995, "penalty_per_breach_pct": 5},
+        {"name": "Clínica San Borja", "sector": "Salud", "annual_contract_pen": 980000, "sponsor_nexus": "Andrés Flores Castillo", "contract_start": "2023-07-01", "renewal_date": "2026-06-30", "sla_uptime": 0.998, "penalty_per_breach_pct": 10},
+        {"name": "Seguros Pacífico Sur", "sector": "Seguros", "annual_contract_pen": 760000, "sponsor_nexus": "Carlos Amat y León Ríos", "contract_start": "2024-02-01", "renewal_date": "2027-01-31", "sla_uptime": 0.995, "penalty_per_breach_pct": 6},
+        {"name": "MicroFinanzas Inka", "sector": "Banca y Finanzas", "annual_contract_pen": 620000, "sponsor_nexus": "Patricia Quispe Huamán", "contract_start": "2024-09-01", "renewal_date": "2026-08-31", "sla_uptime": 0.99, "penalty_per_breach_pct": 4}
+      ],
+      "revenue_concentration_alert_pct": 25,
+      "top_client_concentration_pct": 20.1,
+      "active_ndas": 18,
+      "open_commercial_risks": [
+        "Renovación en riesgo: Clínica San Borja por demoras en proyecto HIS",
+        "Cliente moroso: MicroFinanzas Inka con 45 días de atraso en última factura",
+        "Disputa activa: Retail Norte SAC reclama 3 incumplimientos SLA Q1-2026"
+      ]
+    }
+  },
+
+  "technical_standards": {
+    "approved_stack": {
+      "languages": ["Python 3.11+", "Java 17+", "TypeScript 5+", ".NET 8"],
+      "frameworks_backend": ["FastAPI", "Spring Boot", "NestJS", "ASP.NET Core"],
+      "frameworks_frontend": ["React 18+", "Next.js 14+", "Angular 17+"],
+      "databases": ["PostgreSQL 15+", "MongoDB 6+", "Redis 7+", "SQL Server 2022"],
+      "cloud_primary": "AWS",
+      "cloud_secondary": "Azure",
+      "cloud_exception_only": "GCP",
+      "messaging": ["Apache Kafka", "AWS SQS", "RabbitMQ"]
+    },
+    "mandatory_patterns": {
+      "authentication": "OAuth 2.0 + OIDC",
+      "logging": "Estructurado JSON con correlation_id",
+      "observability": "OpenTelemetry obligatorio en todo servicio productivo",
+      "secrets_management": "HashiCorp Vault o AWS Secrets Manager — prohibido en código o variables de entorno claras"
+    },
+    "security_standards": {
+      "owasp_baseline": "ASVS Nivel 2 mínimo",
+      "sast_required_in_ci": true,
+      "dast_required_pre_release": true,
+      "dependency_scan": "Snyk o Dependabot en todos los repos"
+    },
+    "oss_license_policy": {
+      "allowed": ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"],
+      "forbidden_in_deliverable": ["GPL-2.0", "GPL-3.0", "AGPL-3.0"],
+      "review_required": ["LGPL", "MPL-2.0"]
+    },
+    "adrs_count_active": 15,
+    "adr_examples": [
+      {"id": "ADR-007", "title": "Adopción de event-driven con Kafka para integraciones bancarias", "status": "Accepted", "date": "2024-08-12"},
+      {"id": "ADR-012", "title": "Migración de monolitos legacy a arquitectura modular monolith antes de microservicios", "status": "Accepted", "date": "2025-03-04"},
+      {"id": "ADR-014", "title": "Adopción de PostgreSQL como BD relacional por defecto", "status": "Accepted", "date": "2025-09-21"}
+    ]
+  },
+
+  "post_mortems": {
+    "incidents_catalog_2023_2025_count": 8,
+    "mttr_hours_by_severity": {"P1": 3.2, "P2": 8.7, "P3": 26.4, "P4": 72.0},
+    "repeated_root_cause_pct": 22,
+    "top_recurring_causes": [
+      "Cambios en producción sin feature flag",
+      "Falla de capacidad por crecimiento no anticipado",
+      "Configuraciones incorrectas en cutover",
+      "Dependencias de terceros sin contingencia",
+      "Gaps en pruebas de carga"
+    ],
+    "blameless_policy": true,
+    "postmortem_confidentiality": "Distribución restringida a equipo del proyecto y CTO; no se comparte con cliente sin aprobación de Comercial"
+  },
+
+  "delivery_sdlc": {
+    "phases": [
+      {"name": "Discovery", "duration_weeks": "2-4", "exit_criteria": "Visión aprobada, backlog inicial, arquitectura macro"},
+      {"name": "Design", "duration_weeks": "2-6", "exit_criteria": "ADRs principales, prototipos UX, plan de pruebas"},
+      {"name": "Build", "duration_weeks": "iterativo", "exit_criteria": "Sprints con DoD cumplido"},
+      {"name": "Test", "duration_weeks": "incluido en Build", "exit_criteria": "Cobertura mínima, pruebas E2E verdes"},
+      {"name": "Deploy", "duration_weeks": "1-2", "exit_criteria": "Cutover ejecutado, smoke tests OK"},
+      {"name": "Hypercare", "duration_weeks": 4, "exit_criteria": "Cero P1 abiertos, KT a soporte completado"}
+    ],
+    "definition_of_done_levels": ["historia", "sprint", "release"],
+    "kt_minimum_weeks": 2,
+    "mandatory_ceremonies": ["Daily 15min", "Planning quincenal 2h", "Review quincenal 1h", "Retro quincenal 1h", "Refinement semanal 1h"]
+  },
+
+  "client_sla_management": {
+    "severity_classification": {
+      "P1": {"description": "Servicio crítico caído sin workaround", "response_minutes": 15, "resolution_hours": 4},
+      "P2": {"description": "Funcionalidad mayor afectada, workaround disponible", "response_minutes": 30, "resolution_hours": 8},
+      "P3": {"description": "Funcionalidad menor afectada", "response_hours": 2, "resolution_hours": 24},
+      "P4": {"description": "Consulta o mejora", "response_hours": 24, "resolution_days_business": 5}
+    },
+    "escalation_levels": ["L1 Soporte", "L2 Ingeniería de Producto", "L3 Arquitectura", "Gerencia"],
+    "postmortem_required_for": ["P1", "P2"],
+    "postmortem_deliverable_days": 5,
+    "war_room_trigger": "Toda P1 que supere 1 hora sin avance, o P2 que supere 4 horas"
+  },
+
+  "ai_data_policy": {
+    "data_classification_levels": ["Público", "Interno", "Confidencial", "Restringido"],
+    "llm_usage_matrix": {
+      "Público": {"chatgpt_publico": true, "claude_publico": true, "copilot": true, "ia_corporativa_local": true},
+      "Interno": {"chatgpt_publico": false, "claude_publico": false, "copilot": "solo con cuenta enterprise y opt-out de entrenamiento", "ia_corporativa_local": true},
+      "Confidencial": {"chatgpt_publico": false, "claude_publico": false, "copilot": false, "ia_corporativa_local": true},
+      "Restringido": {"chatgpt_publico": false, "claude_publico": false, "copilot": false, "ia_corporativa_local": "requiere aprobación caso a caso del CISO"}
+    },
+    "approved_use_cases": [
+      "Generación de boilerplate y código no productivo",
+      "Redacción de comunicaciones internas",
+      "Traducción de documentación pública",
+      "Búsqueda semántica sobre repositorios internos (vía chatbot Nexus local)"
+    ],
+    "prohibited_use_cases": [
+      "Subir código de clientes a LLMs públicos",
+      "Ingresar datos personales identificables (DNI, salud, financieros) a herramientas no aprobadas",
+      "Compartir contratos, propuestas comerciales o pricing en LLMs externos",
+      "Usar herramientas con IA embebida no inventariadas por CISO"
+    ],
+    "approval_process": "Solicitud al CISO vía ticket TI-IA; respuesta en 5 días hábiles; revisión incluye DPA, política de retención y opciones de opt-out de entrenamiento",
+    "audit_frequency": "Trimestral por CISO; reporte al Directorio anualmente",
+    "sanction_reference": "D06 Código de Conducta y Ética, capítulo de uso indebido de información"
+  }
+}

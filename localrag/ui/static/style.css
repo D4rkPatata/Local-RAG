@@ -53,6 +53,17 @@ body {
     font-weight: 600;
 }
 
+#roleSelect {
+    margin-left: auto;
+    background: #16213e;
+    color: #e0e0e0;
+    border: 1px solid #2a2a4a;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
 /* Status dot */
 .status-dot {
     width: 10px;

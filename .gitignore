@@ -1,14 +1,12 @@
-# Entorno virtual
+# === Entorno virtual ===
 .venv/
 venv/
 
-# ChromaDB - base vectorial (se genera en runtime)
-localrag/data/
-
-# Variables de entorno
+# === Variables de entorno ===
 .env
+.env.*
 
-# Python
+# === Python ===
 __pycache__/
 *.py[cod]
 *.pyo
@@ -18,22 +16,34 @@ __pycache__/
 dist/
 build/
 *.spec
+.pytest_cache/
 
-# VS Code
-.vscode/
+# === Artefactos generados en runtime (regenerables) ===
+# Base vectorial ChromaDB y modelo LDA: se recrean con
+#   python scripts/reindex_nexus.py   y   python -m rag.lda_model
+localrag/config/data/
 
-# PyInstaller
-*.exe
+# Modelos LLM locales descargados (GGUF, etc.)
+*.gguf
 *.bin
 
-# Archivos temporales
+# === Editores / SO ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Temporales ===
 *.tmp
 *.log
-*.pdf
-*.docx
-*.xlsx
-*.csv
-*.txt
 
-# macOS
-.DS_Store
+# === Archivos de prueba locales (no son parte del proyecto) ===
+localrag/prueba_*
+
+# === Data ajena a PrivaceCheck (no versionar) ===
+data_estudio_contable/
+
+# NOTA: a propósito NO ignoramos *.docx / *.xlsx / *.csv / *.txt / *.pdf.
+# El corpus (corpus/synthetic_docs/*.docx), requirements.txt y la documentación
+# del proyecto SÍ deben versionarse. Los archivos que sube el usuario por la UI
+# van al temp del sistema, no al repo.

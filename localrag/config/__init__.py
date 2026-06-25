@@ -7,13 +7,22 @@ class Settings(BaseSettings):
     app_mode: str = "desktop"
     port: int = 8080
     ollama_url: str = "http://localhost:11434"
-    chat_model: str = "mistral:7b-instruct-q4_K_M"
+    chat_model: str = "qwen2.5:3b"
+    # Temperatura baja: en RAG factual queremos respuestas deterministas y
+    # apegadas al contexto, no creatividad (Ollama usa 0.8 por defecto).
+    temperature: float = 0.2
+    # Máximo de mensajes previos (usuario+asistente) que se conservan como memoria.
+    max_history_messages: int = 6
     embed_model: str = "nomic-embed-text"
     chunk_size: int = 400
     chunk_overlap: int = 100
     top_k: int = 10
     chroma_dir: Path = BASE_DIR / "data" / "chroma_db"
     chroma_collection: str = "documentos"
+    # Política de refusal cuando el usuario no tiene clearance:
+    #   "opaque" → no revela que la información existe (indistinguible de "no sé").
+    #   "honest" → admite que existe pero está restringida.
+    refusal_mode: str = "opaque"
 
     class Config:
         env_file = ".env"

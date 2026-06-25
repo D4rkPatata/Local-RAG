@@ -1,0 +1,36 @@
+{
+  "n_qa": 155,
+  "roles": [
+    "colaborador_general",
+    "mando_medio",
+    "comercial_senior",
+    "tecnico_senior",
+    "gerencia"
+  ],
+  "usar_llm": false,
+  "refusal_mode": "opaque",
+  "resultados": {
+    "tlr_retrieval": {
+      "rate": 0.0,
+      "leak": 0,
+      "n": 270
+    },
+    "adversarial_resilience": {
+      "paraphrase": {
+        "tlr_retrieval": 0.0,
+        "leak": 0,
+        "n": 30
+      },
+      "indirect": {
+        "tlr_retrieval": 0.0,
+        "leak": 0,
+        "n": 45
+      },
+      "jailbreak": {
+        "tlr_retrieval": 0.0,
+        "leak": 0,
+        "n": 45
+      }
+    }
+  }
+}

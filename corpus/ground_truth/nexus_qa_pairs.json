@@ -1,0 +1,781 @@
+{
+  "metadata": {
+    "project": "PrivaceCheck — PLN Proyecto de Curso 2026-1",
+    "methodology": "RIKER — All answers derived directly from nexus_ground_truth.json, not from generated documents",
+    "reference_paper": "arxiv:2601.08847",
+    "total_pairs": 75,
+    "pairs_per_doc": 5,
+    "question_types": ["factual", "procedural", "conditional", "contact", "normative"],
+    "language": "Spanish",
+    "created": "2026-06-10",
+    "gt_source": "nexus_ground_truth.json v1.0"
+  },
+  "qa_pairs": [
+
+    {
+      "id": "QA-D01-01",
+      "doc_id": "D01",
+      "doc_title": "Manual de Bienvenida",
+      "type": "factual",
+      "question": "¿Cuántos empleados tiene Nexus Soluciones S.A.C. en total?",
+      "answer": "Nexus Soluciones S.A.C. cuenta con 148 empleados: 132 en planilla y 16 locadores de servicios.",
+      "gt_field": "company.financials.employees_total",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D01-02",
+      "doc_id": "D01",
+      "doc_title": "Manual de Bienvenida",
+      "type": "procedural",
+      "question": "¿Cuáles son las opciones de turno de trabajo disponibles en Nexus?",
+      "answer": "Nexus ofrece tres turnos: Turno A (08:00–17:30), Turno B (09:00–18:30) y Turno C (10:00–19:30, disponible solo en la oficina de Miraflores). Todos incluyen 60 minutos de almuerzo.",
+      "gt_field": "hr_policies.work_schedule.schedule_options",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D01-03",
+      "doc_id": "D01",
+      "doc_title": "Manual de Bienvenida",
+      "type": "conditional",
+      "question": "¿Qué cobertura de salud recibe un colaborador de Nexus y en qué proporción la financia la empresa?",
+      "answer": "Los colaboradores cuentan con EPS RIMAC. La empresa financia el 70% del costo y el colaborador el 30% restante.",
+      "gt_field": "hr_policies.wellness.health_insurance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D01-04",
+      "doc_id": "D01",
+      "doc_title": "Manual de Bienvenida",
+      "type": "contact",
+      "question": "¿Cuál es la dirección de la sede principal de Nexus Soluciones?",
+      "answer": "La sede principal está ubicada en Av. Javier Prado Este 4200, Pisos 8 y 9, San Isidro, Lima. Teléfono: (01) 611-4200.",
+      "gt_field": "company.headquarters.address",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D01-05",
+      "doc_id": "D01",
+      "doc_title": "Manual de Bienvenida",
+      "type": "normative",
+      "question": "¿Cuáles son los valores corporativos de Nexus Soluciones S.A.C.?",
+      "answer": "Los cinco valores corporativos de Nexus son: Integridad, Innovación, Compromiso, Confidencialidad y Excelencia.",
+      "gt_field": "company.values",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D02-01",
+      "doc_id": "D02",
+      "doc_title": "Procedimiento de Onboarding",
+      "type": "factual",
+      "question": "¿Cuántos días dura el proceso de onboarding para un nuevo colaborador en Nexus?",
+      "answer": "El proceso de onboarding tiene una duración de 15 días.",
+      "gt_field": "hr_policies.onboarding.duration_days",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D02-02",
+      "doc_id": "D02",
+      "doc_title": "Procedimiento de Onboarding",
+      "type": "procedural",
+      "question": "¿Qué actividades se realizan el primer día de trabajo de un nuevo colaborador en Nexus?",
+      "answer": "El Día 1 incluye: recepción por RR.HH., firma de contrato y NDA, entrega de equipos, asignación de credenciales de acceso y recorrido por las instalaciones.",
+      "gt_field": "hr_policies.onboarding.stages[0]",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D02-03",
+      "doc_id": "D02",
+      "doc_title": "Procedimiento de Onboarding",
+      "type": "conditional",
+      "question": "¿A los cuántos días del ingreso recibe el nuevo colaborador su laptop corporativa?",
+      "answer": "La laptop corporativa se asigna a los 3 días del ingreso del colaborador.",
+      "gt_field": "it_policies.equipment.laptop_assignment",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D02-04",
+      "doc_id": "D02",
+      "doc_title": "Procedimiento de Onboarding",
+      "type": "contact",
+      "question": "¿Quién es la Especialista de Selección del área de Recursos Humanos y cómo contactarla?",
+      "answer": "La Especialista de Selección es Lucía Romero Díaz. Puede contactarla en l.romero@nexussoluciones.pe o por extensión 201.",
+      "gt_field": "departments[RRHH].key_contacts[0]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D02-05",
+      "doc_id": "D02",
+      "doc_title": "Procedimiento de Onboarding",
+      "type": "normative",
+      "question": "¿Cuánto tiempo tiene asignado el programa de buddy para apoyar a un nuevo colaborador?",
+      "answer": "El programa de buddy tiene una duración de 30 días desde el inicio del colaborador.",
+      "gt_field": "hr_policies.onboarding.buddy_duration_days",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D03-01",
+      "doc_id": "D03",
+      "doc_title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "factual",
+      "question": "¿Cuántos días de vacaciones anuales tiene derecho un colaborador de Nexus?",
+      "answer": "Cada colaborador tiene derecho a 30 días calendario de vacaciones al año, conforme a ley.",
+      "gt_field": "hr_policies.vacations.days_per_year",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D03-02",
+      "doc_id": "D03",
+      "doc_title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "procedural",
+      "question": "¿Cómo y con cuánta anticipación debo solicitar mis vacaciones en Nexus?",
+      "answer": "Las vacaciones se solicitan a través del Portal de RR.HH. en intranet.nexussoluciones.pe/vacaciones, con al menos 15 días de anticipación. La aprobación la otorga el jefe directo junto con RR.HH.",
+      "gt_field": "hr_policies.vacations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D03-03",
+      "doc_id": "D03",
+      "doc_title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "conditional",
+      "question": "¿Cuántos días de licencia pagada recibe un colaborador por paternidad?",
+      "answer": "Un colaborador tiene derecho a 10 días de licencia por paternidad remunerada, contados desde el nacimiento del hijo.",
+      "gt_field": "hr_policies.leaves_and_permits[1]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D03-04",
+      "doc_id": "D03",
+      "doc_title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "contact",
+      "question": "¿Quién tiene la autoridad para aprobar las solicitudes de vacaciones de los colaboradores?",
+      "answer": "Las solicitudes de vacaciones requieren la aprobación conjunta del jefe directo del colaborador y del área de Recursos Humanos.",
+      "gt_field": "hr_policies.vacations.approval_authority",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D03-05",
+      "doc_id": "D03",
+      "doc_title": "Política de Vacaciones, Licencias y Permisos",
+      "type": "normative",
+      "question": "¿Cuántos días de vacaciones puedo acumular para el año siguiente y hasta cuándo?",
+      "answer": "Se pueden acumular máximo 15 días de vacaciones para el año siguiente. Estos días deben ser tomados antes del 31 de marzo del año posterior, de lo contrario se pierden.",
+      "gt_field": "hr_policies.vacations.carry_over_max_days",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D04-01",
+      "doc_id": "D04",
+      "doc_title": "Política de Trabajo Remoto e Híbrido",
+      "type": "factual",
+      "question": "¿Cuántos días a la semana puede trabajar en modalidad remota un colaborador de Nexus?",
+      "answer": "Los colaboradores pueden trabajar hasta 2 días por semana en modalidad remota bajo el esquema híbrido.",
+      "gt_field": "hr_policies.remote_work_policy.remote_days_per_week",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D04-02",
+      "doc_id": "D04",
+      "doc_title": "Política de Trabajo Remoto e Híbrido",
+      "type": "procedural",
+      "question": "¿Cómo debo formalizar mi acuerdo de trabajo remoto con mi jefe?",
+      "answer": "El acuerdo de trabajo remoto debe ser pactado con el jefe directo y registrado formalmente en la intranet corporativa.",
+      "gt_field": "hr_policies.remote_work_policy.request_process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D04-03",
+      "doc_id": "D04",
+      "doc_title": "Política de Trabajo Remoto e Híbrido",
+      "type": "conditional",
+      "question": "¿Desde qué mes de antigüedad puede un colaborador acogerse al trabajo remoto?",
+      "answer": "A partir del tercer mes de trabajo, el colaborador es elegible para acogerse al régimen de trabajo remoto.",
+      "gt_field": "hr_policies.remote_work_policy.eligible_from_month",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D04-04",
+      "doc_id": "D04",
+      "doc_title": "Política de Trabajo Remoto e Híbrido",
+      "type": "contact",
+      "question": "¿A quién debo contactar para solicitar acceso VPN para trabajar desde casa?",
+      "answer": "Debe solicitar el acceso VPN enviando un correo a helpdesk@nexussoluciones.pe, con la aprobación previa de su jefe directo.",
+      "gt_field": "it_policies.accounts_access.vpn_request",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D04-05",
+      "doc_id": "D04",
+      "doc_title": "Política de Trabajo Remoto e Híbrido",
+      "type": "normative",
+      "question": "¿Qué velocidad mínima de internet se requiere para trabajar en modalidad remota?",
+      "answer": "Se requiere una conexión a internet de mínimo 25 Mbps en el domicilio del colaborador para poder trabajar remotamente.",
+      "gt_field": "hr_policies.remote_work_policy.requirements[0]",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D05-01",
+      "doc_id": "D05",
+      "doc_title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "factual",
+      "question": "¿Con qué frecuencia se realizan las evaluaciones de desempeño en Nexus?",
+      "answer": "Las evaluaciones de desempeño en Nexus son semestrales: la evaluación Mid-Year se realiza en junio-julio (resultados en agosto) y la Year-End en noviembre-diciembre (resultados en enero).",
+      "gt_field": "hr_policies.performance_evaluation.frequency",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D05-02",
+      "doc_id": "D05",
+      "doc_title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "procedural",
+      "question": "¿Cuál es la metodología y escala de la evaluación de desempeño en Nexus?",
+      "answer": "La evaluación utiliza metodología 180 grados (autoevaluación más evaluación del jefe directo) con escala del 1 al 5: 1=Necesita mejorar, 3=Cumple expectativas, 5=Supera expectativas. Se evalúan 5 dimensiones: cumplimiento de objetivos, competencias técnicas, trabajo en equipo, iniciativa e innovación, y comunicación.",
+      "gt_field": "hr_policies.performance_evaluation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D05-03",
+      "doc_id": "D05",
+      "doc_title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "conditional",
+      "question": "¿A qué bono de desempeño puede acceder un colaborador con excelente evaluación?",
+      "answer": "Un colaborador con excelente desempeño puede acceder a un bono anual de hasta 1.5 sueldos, según el resultado de su evaluación de desempeño.",
+      "gt_field": "hr_policies.compensation.bonus_structure",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D05-04",
+      "doc_id": "D05",
+      "doc_title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "contact",
+      "question": "¿Dónde accedo a la plataforma de evaluación de desempeño?",
+      "answer": "La plataforma de evaluación de desempeño está disponible en intranet.nexussoluciones.pe/evaluacion.",
+      "gt_field": "hr_policies.performance_evaluation.platform",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D05-05",
+      "doc_id": "D05",
+      "doc_title": "Reglamento de Evaluación de Desempeño y Compensaciones",
+      "type": "normative",
+      "question": "¿En qué mes se realiza la revisión salarial anual en Nexus?",
+      "answer": "La revisión salarial anual se realiza en enero de cada año, vinculada a los resultados de la evaluación de desempeño Year-End.",
+      "gt_field": "hr_policies.compensation.salary_review_frequency",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D06-01",
+      "doc_id": "D06",
+      "doc_title": "Código de Conducta y Ética Empresarial",
+      "type": "factual",
+      "question": "¿Cuál es el código de vestuario establecido para los días de lunes a jueves en Nexus?",
+      "answer": "De lunes a jueves, el código de vestuario es smart casual. Los viernes es casual. En visitas a clientes se requiere atuendo formal o smart formal.",
+      "gt_field": "hr_policies.code_of_conduct.dress_code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D06-02",
+      "doc_id": "D06",
+      "doc_title": "Código de Conducta y Ética Empresarial",
+      "type": "procedural",
+      "question": "¿Cómo y cuándo debo declarar un posible conflicto de interés?",
+      "answer": "Todos los colaboradores deben presentar una declaración anual obligatoria de conflictos de interés ante el área Legal de Nexus.",
+      "gt_field": "hr_policies.code_of_conduct.conflict_of_interest",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D06-03",
+      "doc_id": "D06",
+      "doc_title": "Código de Conducta y Ética Empresarial",
+      "type": "conditional",
+      "question": "¿Qué ocurre si un colaborador acepta un regalo de un proveedor valorado en S/. 80?",
+      "answer": "Nexus prohíbe absolutamente aceptar regalos de proveedores o clientes que superen S/. 50. Aceptar un regalo de S/. 80 constituye una infracción al código de conducta y puede derivar en medidas disciplinarias.",
+      "gt_field": "hr_policies.code_of_conduct.anti_corruption",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D06-04",
+      "doc_id": "D06",
+      "doc_title": "Código de Conducta y Ética Empresarial",
+      "type": "contact",
+      "question": "¿Cómo puedo reportar una denuncia de manera anónima en Nexus?",
+      "answer": "Puede reportar de manera anónima a través del correo denuncias@nexussoluciones.pe o llamando a la línea ética gratuita: 0800-00-555.",
+      "gt_field": "hr_policies.code_of_conduct.whistleblower_channel",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D06-05",
+      "doc_id": "D06",
+      "doc_title": "Código de Conducta y Ética Empresarial",
+      "type": "normative",
+      "question": "¿Cuáles son los pasos del proceso disciplinario en Nexus ante una infracción?",
+      "answer": "El proceso disciplinario sigue cuatro etapas progresivas: (1) amonestación verbal, (2) amonestación escrita, (3) suspensión sin goce de haber de 1 a 5 días, y (4) despido por causa justificada.",
+      "gt_field": "hr_policies.code_of_conduct.disciplinary_process",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D07-01",
+      "doc_id": "D07",
+      "doc_title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "factual",
+      "question": "¿Cuál es el presupuesto anual de capacitación asignado a cada colaborador en Nexus?",
+      "answer": "Cada colaborador cuenta con un presupuesto anual de S/. 1,500 para capacitaciones y desarrollo profesional.",
+      "gt_field": "hr_policies.training_development.annual_budget_per_employee_soles",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D07-02",
+      "doc_id": "D07",
+      "doc_title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "procedural",
+      "question": "¿Qué proceso debo seguir para solicitar una capacitación externa que supera S/. 800?",
+      "answer": "Para capacitaciones externas que superen S/. 800, se requiere la aprobación del jefe directo, de RR.HH. y adicionalmente del CFO (Patricia Quispe Huamán).",
+      "gt_field": "hr_policies.training_development.external_training_approval",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D07-03",
+      "doc_id": "D07",
+      "doc_title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "conditional",
+      "question": "¿Qué compromiso adquiero con la empresa si financia mi certificación AWS o PMP?",
+      "answer": "Si la empresa financia una certificación, el colaborador adquiere el compromiso de permanecer en Nexus por un mínimo de 12 meses tras completar la capacitación.",
+      "gt_field": "hr_policies.training_development.commitment_after_training_months",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D07-04",
+      "doc_id": "D07",
+      "doc_title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "contact",
+      "question": "¿Dónde puedo acceder a la plataforma de e-learning de Nexus?",
+      "answer": "La plataforma de aprendizaje en línea se llama Nexus Academy y está disponible en intranet.nexussoluciones.pe/academy.",
+      "gt_field": "hr_policies.training_development.platform_elearning",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D07-05",
+      "doc_id": "D07",
+      "doc_title": "Plan de Capacitación y Desarrollo Profesional",
+      "type": "normative",
+      "question": "¿Qué certificaciones financia directamente Nexus para sus colaboradores?",
+      "answer": "Nexus financia directamente las certificaciones en: AWS, Azure, Scrum Master, PMP e ISO 27001 Lead Implementer.",
+      "gt_field": "hr_policies.training_development.certifications_paid_by_company",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D08-01",
+      "doc_id": "D08",
+      "doc_title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "factual",
+      "question": "¿Cuántos simulacros de emergencia realiza Nexus por año?",
+      "answer": "Nexus realiza 2 simulacros de emergencia al año, coordinados por el Comité de Seguridad y Salud en el Trabajo.",
+      "gt_field": "hr_policies.health_safety.annual_drills",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D08-02",
+      "doc_id": "D08",
+      "doc_title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "procedural",
+      "question": "¿Cuál es el punto de reunión en caso de evacuación de emergencia en la sede de San Isidro?",
+      "answer": "En caso de evacuación, el punto de reunión designado es el Estacionamiento B1. Las escaleras de emergencia se acceden por el pasillo central de cada piso.",
+      "gt_field": "hr_policies.health_safety.emergency_exits",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D08-03",
+      "doc_id": "D08",
+      "doc_title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "conditional",
+      "question": "¿Cuándo y cómo se realizan los exámenes ocupacionales de salud en Nexus?",
+      "answer": "Los exámenes ocupacionales se realizan anualmente. Son coordinados por el área de RR.HH. durante el mes de febrero.",
+      "gt_field": "hr_policies.health_safety.occupational_health_exams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D08-04",
+      "doc_id": "D08",
+      "doc_title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "contact",
+      "question": "¿Quién preside el Comité de Seguridad y Salud en el Trabajo como representante de la empresa?",
+      "answer": "Marco Huanca Soto, Líder de Infraestructura del área de TI, es el representante de la empresa en el Comité de Seguridad y Salud en el Trabajo.",
+      "gt_field": "hr_policies.health_safety.committee_head",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D08-05",
+      "doc_id": "D08",
+      "doc_title": "Reglamento Interno de Seguridad y Salud en el Trabajo",
+      "type": "normative",
+      "question": "¿En qué ubicaciones se encuentran los botiquines de primeros auxilios en las instalaciones de Nexus?",
+      "answer": "Los botiquines de primeros auxilios se encuentran en tres ubicaciones: Recepción de San Isidro, Piso 9 de San Isidro y Recepción de la oficina de Miraflores.",
+      "gt_field": "hr_policies.health_safety.first_aid_kits_locations",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D09-01",
+      "doc_id": "D09",
+      "doc_title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "factual",
+      "question": "¿Cuántos caracteres mínimos debe tener una contraseña corporativa en Nexus y cada cuántos días debe cambiarse?",
+      "answer": "Las contraseñas corporativas deben tener mínimo 12 caracteres (incluyendo mayúsculas, números y caracteres especiales) y deben renovarse cada 90 días. No se pueden reutilizar las últimas 6 contraseñas.",
+      "gt_field": "it_policies.accounts_access.password_policy",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D09-02",
+      "doc_id": "D09",
+      "doc_title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "procedural",
+      "question": "¿Qué herramientas están autorizadas para almacenamiento de archivos en la nube en Nexus?",
+      "answer": "Las herramientas autorizadas para almacenamiento en la nube son SharePoint corporativo y OneDrive personal. Están prohibidos Google Drive personal, Dropbox y WeTransfer para información sensible.",
+      "gt_field": "it_policies.authorized_tools.cloud_storage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D09-03",
+      "doc_id": "D09",
+      "doc_title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "conditional",
+      "question": "¿Es posible usar herramientas de inteligencia artificial generativa con datos de clientes de Nexus?",
+      "answer": "No. El uso de herramientas de IA generativa con datos de clientes está PROHIBIDO. Para proyectos internos, su uso requiere aprobación previa del CISO (Diana Reyes Castañeda).",
+      "gt_field": "it_policies.authorized_tools.ai_tools",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D09-04",
+      "doc_id": "D09",
+      "doc_title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "contact",
+      "question": "¿A quién o a dónde debo dirigirme para solicitar acceso a sistemas internos de TI?",
+      "answer": "Las solicitudes de acceso a sistemas TI se realizan en intranet.nexussoluciones.pe/solicitudes-ti, o contactando a la Mesa de Ayuda en helpdesk@nexussoluciones.pe, ext. 300.",
+      "gt_field": "it_policies.accounts_access.access_request_form",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D09-05",
+      "doc_id": "D09",
+      "doc_title": "Política de Seguridad de la Información y Uso de Equipos TI",
+      "type": "normative",
+      "question": "¿Qué tipos de software están prohibidos instalar en los equipos corporativos de Nexus?",
+      "answer": "Está prohibido instalar: software de torrents, software de criptomonedas o minería, VPNs no autorizadas y cualquier software sin licencia.",
+      "gt_field": "it_policies.equipment.prohibited_software",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D10-01",
+      "doc_id": "D10",
+      "doc_title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "factual",
+      "question": "¿Cuál es el tiempo máximo de respuesta para un incidente P1 (Crítico) en Nexus?",
+      "answer": "Un incidente P1 (Crítico) debe tener respuesta en un máximo de 15 minutos y resolverse dentro de las 4 horas siguientes.",
+      "gt_field": "it_policies.incident_management.severity_levels[0]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D10-02",
+      "doc_id": "D10",
+      "doc_title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "procedural",
+      "question": "¿Cómo debo reportar un incidente de TI en Nexus?",
+      "answer": "Los incidentes de TI se reportan al correo helpdesk@nexussoluciones.pe o a la extensión 300. El ticket debe registrarse en el sistema Jira Service Management, disponible en jira.nexussoluciones.pe/servicedesk.",
+      "gt_field": "it_policies.incident_management.report_channel",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D10-03",
+      "doc_id": "D10",
+      "doc_title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "conditional",
+      "question": "¿A quiénes se debe notificar inmediatamente ante un incidente P2 (Alto) de seguridad?",
+      "answer": "Ante un incidente P2 (Alto), se debe notificar de inmediato al CISO (Diana Reyes Castañeda) y al CTO (Andrés Flores Castillo). El tiempo de respuesta es de 30 minutos y la resolución debe ocurrir en 8 horas.",
+      "gt_field": "it_policies.incident_management.severity_levels[1]",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D10-04",
+      "doc_id": "D10",
+      "doc_title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "contact",
+      "question": "¿Cuál es el sistema de tickets para la gestión de incidentes de TI en Nexus?",
+      "answer": "El sistema de tickets es Jira Service Management, accesible en jira.nexussoluciones.pe/servicedesk.",
+      "gt_field": "it_policies.incident_management.ticket_system",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D10-05",
+      "doc_id": "D10",
+      "doc_title": "Procedimiento de Gestión de Incidentes de TI",
+      "type": "normative",
+      "question": "¿Para qué niveles de incidente es obligatorio generar un informe post-incidente en Nexus?",
+      "answer": "El informe post-incidente es obligatorio únicamente para incidentes de nivel P1 (Crítico) y P2 (Alto).",
+      "gt_field": "it_policies.incident_management.post_incident_report_required_for",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D11-01",
+      "doc_id": "D11",
+      "doc_title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "factual",
+      "question": "¿En cuántas horas debe notificarse una brecha de datos de cliente desde que se detecta?",
+      "answer": "Una brecha de datos de cliente debe notificarse dentro de las 72 horas de haber sido detectada.",
+      "gt_field": "it_policies.client_data_policy.breach_notification_hours",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D11-02",
+      "doc_id": "D11",
+      "doc_title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "procedural",
+      "question": "¿Qué debe ocurrir con los datos de un cliente cuando se cierra el contrato con ese cliente?",
+      "answer": "Los datos del cliente deben ser eliminados dentro de los 30 días calendarios siguientes al cierre del contrato. La eliminación debe documentarse mediante un acta de destrucción.",
+      "gt_field": "it_policies.client_data_policy.deletion_after_project",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D11-03",
+      "doc_id": "D11",
+      "doc_title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "conditional",
+      "question": "¿A quiénes se debe notificar en caso de una brecha de datos de cliente en Nexus?",
+      "answer": "Ante una brecha de datos de cliente, se debe notificar al DPO (Mónica Salinas Bustamante), al cliente afectado y a INDECOPI si la regulación lo requiere.",
+      "gt_field": "it_policies.client_data_policy.breach_notify_to",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D11-04",
+      "doc_id": "D11",
+      "doc_title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "contact",
+      "question": "¿Quién es el Oficial de Protección de Datos (DPO) de Nexus y cómo contactarlo?",
+      "answer": "El Oficial de Protección de Datos (DPO) es Mónica Salinas Bustamante. Puede contactarla en dpo@nexussoluciones.pe o al m.salinas@nexussoluciones.pe, extensión 106.",
+      "gt_field": "departments[LEGAL].key_contacts[1]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D11-05",
+      "doc_id": "D11",
+      "doc_title": "Política de Protección de Datos y Manejo de Información de Clientes",
+      "type": "normative",
+      "question": "¿Cómo se clasifica la información de datos de clientes y contratos en Nexus?",
+      "answer": "Los datos de clientes, contratos, información financiera y código fuente de proyectos se clasifican como 'Confidencial'. Solo pueden ser accedidos con necesidad de negocio justificada, no se envían por canales no cifrados y no se almacenan en dispositivos personales.",
+      "gt_field": "it_policies.data_classification[0]",
+      "difficulty": "medium"
+    },
+
+    {
+      "id": "QA-D12-01",
+      "doc_id": "D12",
+      "doc_title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "factual",
+      "question": "¿Hasta qué monto puede aprobar un jefe de área una compra sin necesidad de cotizaciones formales?",
+      "answer": "Un jefe de área puede aprobar compras de hasta S/. 500 mediante solicitud verbal o email, sin requerir cotizaciones formales ni orden de compra.",
+      "gt_field": "procurement_policy.thresholds[0]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D12-02",
+      "doc_id": "D12",
+      "doc_title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "procedural",
+      "question": "¿Qué documentos y aprobaciones se requieren para una compra entre S/. 501 y S/. 2,000?",
+      "answer": "Para compras entre S/. 501 y S/. 2,000 se requiere: completar el formulario en la intranet, presentar 2 cotizaciones, aprobación del jefe de área y del Analista de Compras, y generar una orden de compra (PO).",
+      "gt_field": "procurement_policy.thresholds[1]",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D12-03",
+      "doc_id": "D12",
+      "doc_title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "conditional",
+      "question": "¿Quién debe aprobar una compra superior a S/. 10,000 y qué proceso sigue?",
+      "answer": "Las compras superiores a S/. 10,000 deben ser aprobadas por el Gerente General (Ricardo Mendoza Paredes) mediante un proceso de licitación interna, informe de evaluación y aprobación en comité.",
+      "gt_field": "procurement_policy.thresholds[3]",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D12-04",
+      "doc_id": "D12",
+      "doc_title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "contact",
+      "question": "¿Quién es el Analista de Compras de Nexus y cómo contactarlo?",
+      "answer": "La Analista de Compras es Carmen Villacorta Ruiz. Puede contactarla en c.villacorta@nexussoluciones.pe o a la extensión 602.",
+      "gt_field": "procurement_policy.contact",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D12-05",
+      "doc_id": "D12",
+      "doc_title": "Procedimiento de Compras y Gestión de Proveedores",
+      "type": "normative",
+      "question": "¿Cuáles son los plazos de pago estándar a proveedores en Nexus?",
+      "answer": "El plazo de pago estándar a proveedores es de 30 días desde la fecha de factura. Si el pago se realiza a 15 días, el proveedor otorga un descuento del 2%.",
+      "gt_field": "procurement_policy.payment_terms",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D13-01",
+      "doc_id": "D13",
+      "doc_title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "factual",
+      "question": "¿Cuánto es el viático diario autorizado para gastos de alimentación en Lima?",
+      "answer": "El viático diario para gastos en Lima es de S/. 35 por día.",
+      "gt_field": "expenses_travel_policy.per_diem_rates.lima_daily_lunch_soles",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D13-02",
+      "doc_id": "D13",
+      "doc_title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "procedural",
+      "question": "¿Cuál es el proceso y plazo para solicitar un reembolso de gastos de viaje?",
+      "answer": "El reembolso debe solicitarse dentro de los 5 días hábiles posteriores al viaje a través del formulario en intranet.nexussoluciones.pe/reembolsos, adjuntando todos los comprobantes. Requiere aprobación del jefe directo y Finanzas. El pago se realiza en 7 días.",
+      "gt_field": "expenses_travel_policy.reimbursement_process",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D13-03",
+      "doc_id": "D13",
+      "doc_title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "conditional",
+      "question": "¿Qué clase de vuelo corresponde para un viaje de negocios de 10 horas de duración?",
+      "answer": "Para viajes aéreos de más de 8 horas de duración, se puede viajar en clase business o superior. Para vuelos de 8 horas o menos, siempre corresponde clase económica.",
+      "gt_field": "expenses_travel_policy.transport.flight_class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D13-04",
+      "doc_id": "D13",
+      "doc_title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "contact",
+      "question": "¿A quién debo contactar para solicitar un anticipo de viaje?",
+      "answer": "Para solicitar un anticipo de viaje, debe contactar a Daniela Soto Peña del área de Caja y Viáticos en d.soto@nexussoluciones.pe o extensión 603. La solicitud debe hacerse con 3 días de anticipación.",
+      "gt_field": "departments[ADMIN].key_contacts[2]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D13-05",
+      "doc_id": "D13",
+      "doc_title": "Política de Gastos, Viáticos y Reembolsos",
+      "type": "normative",
+      "question": "¿Qué tipos de gastos no son reembolsables bajo la política de Nexus?",
+      "answer": "No son reembolsables: consumo de alcohol, entretenimiento personal, gastos de acompañantes no autorizados y multas de tránsito.",
+      "gt_field": "expenses_travel_policy.not_reimbursable",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D14-01",
+      "doc_id": "D14",
+      "doc_title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "factual",
+      "question": "¿Cuál es la sala de reuniones más grande de la sede San Isidro y cuántas personas tiene capacidad?",
+      "answer": "La sala más grande es la Sala Lima, ubicada en el Piso 9, con capacidad para 20 personas. Cuenta con proyector 4K, sistema de audio, videoconferencia y pizarra doble.",
+      "gt_field": "facilities_policy.meeting_rooms.san_isidro_rooms[2]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D14-02",
+      "doc_id": "D14",
+      "doc_title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "procedural",
+      "question": "¿Cómo y con cuánta anticipación puedo reservar una sala de reuniones en Nexus?",
+      "answer": "Las salas de reuniones se reservan a través de Microsoft Outlook o Teams usando el calendario de recursos. Se pueden reservar con un máximo de 14 días de anticipación y la duración máxima de reserva es de 4 horas.",
+      "gt_field": "facilities_policy.meeting_rooms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D14-03",
+      "doc_id": "D14",
+      "doc_title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "conditional",
+      "question": "¿Qué ocurre con una sala reservada si los participantes no han llegado 15 minutos después de la hora de inicio?",
+      "answer": "Si no hay uso de la sala después de 15 minutos de la hora de inicio reservada, la sala debe liberarse para que otros colaboradores puedan utilizarla.",
+      "gt_field": "facilities_policy.meeting_rooms.overtime_rule",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D14-04",
+      "doc_id": "D14",
+      "doc_title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "contact",
+      "question": "¿Qué documento debe presentar un visitante externo al ingresar a las instalaciones de Nexus?",
+      "answer": "Todos los visitantes externos deben registrarse en recepción presentando su DNI. Adicionalmente, deben portar la credencial de visitante durante toda su estancia y ser acompañados en todo momento por un colaborador.",
+      "gt_field": "facilities_policy.visitors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D14-05",
+      "doc_id": "D14",
+      "doc_title": "Reglamento de Uso de Instalaciones y Espacios Corporativos",
+      "type": "normative",
+      "question": "¿A qué zonas de las instalaciones no tienen acceso los visitantes externos de Nexus?",
+      "answer": "Los visitantes externos tienen prohibido el acceso a la Sala de Servidores (Piso 9, San Isidro) y al Archivo Confidencial (Piso 8, San Isidro).",
+      "gt_field": "facilities_policy.visitors.no_access_zones",
+      "difficulty": "easy"
+    },
+
+    {
+      "id": "QA-D15-01",
+      "doc_id": "D15",
+      "doc_title": "Directorio Corporativo y Organigrama",
+      "type": "factual",
+      "question": "¿Quién es el Gerente General (CEO) de Nexus Soluciones S.A.C. y cuál es su contacto?",
+      "answer": "El Gerente General es Ricardo Mendoza Paredes, quien está en la empresa desde 2017. Puede contactarlo en r.mendoza@nexussoluciones.pe o a la extensión 101.",
+      "gt_field": "leadership.executives[0]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D15-02",
+      "doc_id": "D15",
+      "doc_title": "Directorio Corporativo y Organigrama",
+      "type": "procedural",
+      "question": "¿Cómo está estructurada la jerarquía directiva de Nexus Soluciones?",
+      "answer": "La estructura directiva es: Directorio (presidido por Eduardo Vargas Llona) → Gerente General (Ricardo Mendoza Paredes) → cinco gerentes funcionales que reportan al CEO: CFO (Patricia Quispe Huamán), CTO (Andrés Flores Castillo), CHRO (Silvia Torres Vega), Gerente Comercial (Carlos Amat y León Ríos) y Gerente Legal (Mónica Salinas Bustamante).",
+      "gt_field": "leadership",
+      "difficulty": "medium"
+    },
+    {
+      "id": "QA-D15-03",
+      "doc_id": "D15",
+      "doc_title": "Directorio Corporativo y Organigrama",
+      "type": "conditional",
+      "question": "¿A quién reporta la Gerente de Finanzas y Administración (CFO) de Nexus?",
+      "answer": "La Gerente de Finanzas y Administración (CFO), Patricia Quispe Huamán, reporta directamente al Gerente General, Ricardo Mendoza Paredes.",
+      "gt_field": "leadership.executives[1].reports_to",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D15-04",
+      "doc_id": "D15",
+      "doc_title": "Directorio Corporativo y Organigrama",
+      "type": "contact",
+      "question": "¿Cuál es el email y extensión telefónica del Gerente de Tecnología (CTO) de Nexus?",
+      "answer": "El Gerente de Tecnología (CTO) es Andrés Flores Castillo. Su correo es a.flores@nexussoluciones.pe y su extensión es la 103.",
+      "gt_field": "leadership.executives[2]",
+      "difficulty": "easy"
+    },
+    {
+      "id": "QA-D15-05",
+      "doc_id": "D15",
+      "doc_title": "Directorio Corporativo y Organigrama",
+      "type": "normative",
+      "question": "¿Cuántos departamentos tiene Nexus Soluciones y cuál de ellos cuenta con el mayor número de colaboradores?",
+      "answer": "Nexus cuenta con 7 departamentos. El departamento con mayor cantidad de colaboradores es Desarrollo de Software con 42 personas, seguido de Consultoría y Proyectos con 35.",
+      "gt_field": "departments",
+      "difficulty": "medium"
+    }
+
+  ]
+}

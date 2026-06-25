@@ -1,4 +1,10 @@
-const API = "http://127.0.0.1:8080";
+// Misma origen que sirvió la página: en local es 127.0.0.1:8080; desde otra
+// laptop en la LAN es http://<ip-del-servidor>:8080. Así el cliente siempre
+// apunta al servidor correcto, no a sí mismo.
+const API = window.location.origin;
+
+// Memoria de conversación (se envía en cada request para dar continuidad).
+let history = [];
 
 // Verificar estado de Ollama al cargar
 async function checkStatus() {
@@ -76,10 +82,11 @@ async function sendMessage() {
     const msgEl = addMessage("Asistente", "", "assistant thinking");
 
     try {
+        const role = document.getElementById("roleSelect").value;
         const res = await fetch(`${API}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pregunta })
+            body: JSON.stringify({ pregunta, role, history })
         });
 
         const reader = res.body.getReader();
@@ -94,12 +101,23 @@ async function sendMessage() {
             msgEl.classList.remove("thinking");
             scrollToBottom();
         }
+
+        // Guardar el turno en la memoria (cap a 6 mensajes = 3 turnos).
+        history.push({ role: "user", content: pregunta });
+        history.push({ role: "assistant", content: texto });
+        history = history.slice(-6);
     } catch (e) {
         msgEl.textContent = "Error al conectar con el servidor.";
     }
 
     document.getElementById("sendBtn").disabled = false;
 }
+
+// Cambiar de rol reinicia la conversación (no se mezcla contexto entre roles).
+document.addEventListener("DOMContentLoaded", () => {
+    const sel = document.getElementById("roleSelect");
+    if (sel) sel.addEventListener("change", () => { history = []; });
+});
 
 // Helpers
 function addMessage(quien, texto, clase) {

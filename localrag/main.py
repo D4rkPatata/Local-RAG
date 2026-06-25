@@ -1,3 +1,4 @@
+import airgap  # noqa: F401  — endurecimiento offline antes de cualquier otra cosa
 import sys
 import time
 import threading
@@ -71,12 +72,19 @@ def run_wizard():
 
     console.print("[green]✓ Ollama detectado[/green]")
 
-    # 2. Verificar modelos
-    for model in [settings.chat_model, settings.embed_model]:
-        if not check_model(settings.ollama_url, model):
-            download_model(settings.ollama_url, model)
-        else:
-            console.print(f"[green]✓ Modelo {model} disponible[/green]")
+    # 2. Verificar modelo de chat. Los embeddings son locales (sentence-transformers),
+    #    así que embed_model ya NO se descarga: era egreso innecesario.
+    if check_model(settings.ollama_url, settings.chat_model):
+        console.print(f"[green]✓ Modelo {settings.chat_model} disponible[/green]")
+    elif airgap.OFFLINE:
+        # En modo air-gap no se descarga nada: se exige el modelo pre-instalado.
+        console.print(f"[red]✗ Modelo {settings.chat_model} no está instalado en Ollama.[/red]")
+        console.print("\nModo offline activo (sin descargas). Pre-instálalo con red:")
+        console.print(f"  ollama pull {settings.chat_model}")
+        console.print("  (o ejecuta con LOCALRAG_OFFLINE=0 una sola vez)\n")
+        sys.exit(1)
+    else:
+        download_model(settings.ollama_url, settings.chat_model)
 
     # 3. Abrir browser cuando el servidor esté listo
     url = f"http://127.0.0.1:{settings.port}"
