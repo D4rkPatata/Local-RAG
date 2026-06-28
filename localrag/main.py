@@ -5,10 +5,21 @@ import threading
 import webbrowser
 import httpx
 import uvicorn
+import socket
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 console = Console()
+
+def get_local_ip() -> str:   # ← pegar aquí, antes de check_ollama
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
 
 def check_ollama(ollama_url: str) -> bool:
     try:
@@ -87,15 +98,19 @@ def run_wizard():
         download_model(settings.ollama_url, settings.chat_model)
 
     # 3. Abrir browser cuando el servidor esté listo
-    url = f"http://127.0.0.1:{settings.port}"
+    host_display = "127.0.0.1" if get_host() == "127.0.0.1" else "0.0.0.0"
+    url = f"http://127.0.0.1:{settings.port}"  # el browser siempre abre en local
+    if get_host() != "127.0.0.1":
+        ip_local = get_local_ip()
+        console.print(f"[yellow]Modo servidor: otros pueden conectarse en http://{ip_local}:{settings.port}[/yellow]")
     threading.Thread(target=open_browser_when_ready, args=(url,), daemon=True).start()
 
     console.print(f"\n[bold green]Servidor iniciado en {url}[/bold green]\n")
 
 if __name__ == "__main__":
-    run_wizard()
-
     from api.app import app
     from config import settings, get_host
+    
+    run_wizard()
 
     uvicorn.run(app, host=get_host(), port=settings.port)

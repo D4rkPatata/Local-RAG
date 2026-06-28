@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from api.routes import chat, ingest, status
+from api.routes import chat, ingest, status, auth
 
 app = FastAPI(title="LocalRAG")
 
+app.include_router(auth.router)
 app.include_router(chat.router)
 app.include_router(ingest.router)
 app.include_router(status.router)

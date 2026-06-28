@@ -55,6 +55,11 @@ def ingestar(path: Path):
         raise ValueError(f"Formato no soportado: {extension}")
 
     texto = parser(path)
+    if texto is None:
+        raise ValueError(f"El parser devolvió None para {path}. Verifica que el archivo sea válido.")
+    if not texto.strip():
+        print(f"[AVISO] El archivo {path.name} está vacío o no contiene texto.")
+        
     chunks = chunkear(texto)
 
     doc_id, tier, tier_category = _tier_de_archivo(path.name)

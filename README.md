@@ -115,3 +115,6 @@ python -m pytest tests/           # tests del control de acceso
 ## Formatos soportados
 
 PDF, Word (.docx), Excel (.xlsx), CSV, TXT
+
+## Credenciales de demo
+Ver `CREDENTIALS_DEMO.md` (no incluido en el repo, solicitar al equipo).

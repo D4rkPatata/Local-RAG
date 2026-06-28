@@ -76,3 +76,21 @@ def allowed_doc_ids(user: User) -> set[str]:
         for doc_id, (tier, categoria) in DOC_TIER.items()
         if _clearance_permite(clearance, tier, categoria)
     }
+
+import bcrypt
+
+USERS_DB: dict[str, dict] = {
+    "juan.perez":  {"password_hash": "$2b$12$2u597m2sB.cP.HK0y9XVZOzlkVn16/lZZetAY6rfr7ildGAP0PiHG", "rol": "colaborador_general"},
+    "ana.gomez":   {"password_hash": "$2b$12$UskBvIOkwftFxDNOrtAxc.DzpkEW6djABmlrl8hr9Fq92x9yVW2S.", "rol": "mando_medio"},
+    "carlos.vega": {"password_hash": "$2b$12$EyUlL6JgEww6P6WYZTkcQ.QsCYvtrY9kFx8uFgyZoGi4LkgrhVXqm", "rol": "comercial_senior"},
+    "lucia.rios":  {"password_hash": "$2b$12$WtKSyszGM1z/OdAANsBK5OxrpJt.fAk9JknC5HIspOi796IUOu6t6", "rol": "tecnico_senior"},
+    "admin":       {"password_hash": "$2b$12$2ooKGLX0yjbg1OEbmN3.lOGf0dpuCQhnpw1ratj6xFqgHbS8esMIa", "rol": "gerencia"},
+}
+
+def authenticate(username: str, password: str) -> "User | None":
+    entry = USERS_DB.get(username)
+    if not entry:
+        return None
+    if bcrypt.checkpw(password.encode(), entry["password_hash"].encode()):
+        return User(name=username, role=entry["rol"])
+    return None

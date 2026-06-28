@@ -42,6 +42,7 @@ localrag/prueba_*
 
 # === Data ajena a PrivaceCheck (no versionar) ===
 data_estudio_contable/
+CREDENTIALS_DEMO.md
 
 # NOTA: a propósito NO ignoramos *.docx / *.xlsx / *.csv / *.txt / *.pdf.
 # El corpus (corpus/synthetic_docs/*.docx), requirements.txt y la documentación
