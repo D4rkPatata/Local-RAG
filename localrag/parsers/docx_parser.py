@@ -2,7 +2,15 @@ from pathlib import Path
 from docx import Document
 
 def parse_docx(path: Path) -> str:
-    doc = Document(path)
+    """Extrae texto de un archivo .docx.
+    Si falla, devuelve una cadena vacía y muestra un warning.
+    """
+    try:
+        doc = Document(path)
+    except Exception as e:
+        print(f"[ADVERTENCIA] No se pudo leer {path}: {e}")
+        return ""   # Devuelve string vacío para no romper el flujo
+
     texto = ""
     for parrafo in doc.paragraphs:
         if parrafo.text.strip():

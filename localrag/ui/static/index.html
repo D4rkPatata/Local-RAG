@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocalRAG</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <!-- Panel izquierdo: Chat -->
+
+    <!-- Pantalla de login (visible por defecto) -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <h1>LocalRAG</h1>
+            <p>Ingresá tus credenciales</p>
+            <input type="text" id="loginUser" placeholder="Usuario" />
+            <input type="password" id="loginPass" placeholder="Contraseña" />
+            <button onclick="login()">Ingresar</button>
+            <p id="loginError" class="login-error"></p>
+        </div>
+    </div>
+
+    <!-- App principal (oculta hasta login) -->
+    <div id="appScreen" class="container" style="display:none">
         <div class="panel chat-panel">
             <div class="panel-header">
                 <h1>LocalRAG</h1>
-                <select id="roleSelect" title="Rol del usuario (controla el acceso a documentos)">
-                    <option value="colaborador_general">Colaborador general (Tier-1)</option>
-                    <option value="mando_medio">Mando medio (Tier-1/2)</option>
-                    <option value="comercial_senior">Comercial senior (+Tier-3 comercial)</option>
-                    <option value="tecnico_senior">Técnico senior (+Tier-3 técnico)</option>
-                    <option value="gerencia">Gerencia (todos)</option>
-                </select>
+                <!-- Rol mostrado como info, ya no editable -->
+                <span id="rolBadge" class="rol-badge"></span>
                 <span class="status-dot" id="statusDot"></span>
+                <button onclick="logout()" class="logout-btn">Salir</button>
             </div>
             <div class="messages" id="messages">
                 <div class="message assistant">
@@ -32,7 +43,6 @@
             </div>
         </div>
 
-        <!-- Panel derecho: Documentos -->
         <div class="panel docs-panel">
             <div class="panel-header">
                 <h2>Documentos</h2>
@@ -44,6 +54,8 @@
             <div class="doc-list" id="docList"></div>
         </div>
     </div>
+
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -1,75 +1,61 @@
-// Misma origen que sirvió la página: en local es 127.0.0.1:8080; desde otra
-// laptop en la LAN es http://<ip-del-servidor>:8080. Así el cliente siempre
-// apunta al servidor correcto, no a sí mismo.
 const API = window.location.origin;
-
-// Memoria de conversación (se envía en cada request para dar continuidad).
 let history = [];
 
-// Verificar estado de Ollama al cargar
-async function checkStatus() {
+// ── Auth ──────────────────────────────────────────────────────────────────────
+
+async function checkSession() {
     try {
-        const res = await fetch(`${API}/status`);
-        const data = await res.json();
-        const dot = document.getElementById("statusDot");
-        dot.className = "status-dot " + (data.ollama ? "online" : "offline");
+        const res = await fetch(`${API}/auth/me`);
+        if (res.ok) {
+            const data = await res.json();
+            showApp(data.name, data.rol);
+        } else {
+            showLogin();
+        }
     } catch {
-        document.getElementById("statusDot").className = "status-dot offline";
+        showLogin();
     }
 }
 
-// Cargar lista de documentos
-async function loadDocuments() {
-    try {
-        const res = await fetch(`${API}/documents`);
+async function login() {
+    const username = document.getElementById("loginUser").value.trim();
+    const password = document.getElementById("loginPass").value;
+    const res = await fetch(`${API}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    });
+    if (res.ok) {
         const data = await res.json();
-        const list = document.getElementById("docList");
-        list.innerHTML = "";
-        data.documentos.forEach(doc => {
-            const item = document.createElement("div");
-            item.className = "doc-item";
-            item.innerHTML = `
-                <span title="${doc}">${doc}</span>
-                <button onclick="deleteDoc('${doc}')">✕</button>
-            `;
-            list.appendChild(item);
-        });
-    } catch (e) {
-        console.error("Error cargando documentos:", e);
+        showApp(data.name, data.rol);
+    } else {
+        document.getElementById("loginError").textContent = "Usuario o contraseña incorrectos.";
     }
 }
 
-// Subir documento
-async function uploadFile(input) {
-    const file = input.files[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    addMessage("Sistema", `Procesando ${file.name}...`, "thinking");
-
-    try {
-        const res = await fetch(`${API}/ingest`, { method: "POST", body: formData });
-        const data = await res.json();
-        removeLastThinking();
-        addMessage("Sistema", data.mensaje, "assistant");
-        loadDocuments();
-    } catch (e) {
-        removeLastThinking();
-        addMessage("Sistema", "Error al subir el documento.", "assistant");
-    }
-
-    input.value = "";
+async function logout() {
+    await fetch(`${API}/auth/logout`, { method: "POST" });
+    history = [];
+    showLogin();
 }
 
-// Eliminar documento
-async function deleteDoc(filename) {
-    await fetch(`${API}/documents/${encodeURIComponent(filename)}`, { method: "DELETE" });
+function showLogin() {
+    document.getElementById("loginScreen").style.display = "flex";
+    document.getElementById("appScreen").style.display = "none";
+    document.getElementById("loginPass").value = "";
+    document.getElementById("loginError").textContent = "";
+}
+
+function showApp(name, rol) {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("appScreen").style.display = "flex";
+    document.getElementById("rolBadge").textContent = `${name} · ${rol}`;
+    checkStatus();
     loadDocuments();
 }
 
-// Enviar pregunta
+// ── Chat ──────────────────────────────────────────────────────────────────────
+
 async function sendMessage() {
     const input = document.getElementById("input");
     const pregunta = input.value.trim();
@@ -77,22 +63,25 @@ async function sendMessage() {
 
     input.value = "";
     document.getElementById("sendBtn").disabled = true;
-
     addMessage("Vos", pregunta, "user");
     const msgEl = addMessage("Asistente", "", "assistant thinking");
 
     try {
-        const role = document.getElementById("roleSelect").value;
         const res = await fetch(`${API}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pregunta, role, history })
+            body: JSON.stringify({ pregunta, history })  // sin 'role'
         });
+
+        if (res.status === 401) {
+            msgEl.textContent = "Sesión expirada. Volvé a iniciar sesión.";
+            setTimeout(showLogin, 2000);
+            return;
+        }
 
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let texto = "";
-
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -102,7 +91,6 @@ async function sendMessage() {
             scrollToBottom();
         }
 
-        // Guardar el turno en la memoria (cap a 6 mensajes = 3 turnos).
         history.push({ role: "user", content: pregunta });
         history.push({ role: "assistant", content: texto });
         history = history.slice(-6);
@@ -113,13 +101,61 @@ async function sendMessage() {
     document.getElementById("sendBtn").disabled = false;
 }
 
-// Cambiar de rol reinicia la conversación (no se mezcla contexto entre roles).
-document.addEventListener("DOMContentLoaded", () => {
-    const sel = document.getElementById("roleSelect");
-    if (sel) sel.addEventListener("change", () => { history = []; });
-});
+// ── Documentos ────────────────────────────────────────────────────────────────
 
-// Helpers
+async function checkStatus() {
+    try {
+        const res = await fetch(`${API}/status`);
+        const data = await res.json();
+        document.getElementById("statusDot").className = "status-dot " + (data.ollama ? "online" : "offline");
+    } catch {
+        document.getElementById("statusDot").className = "status-dot offline";
+    }
+}
+
+async function loadDocuments() {
+    try {
+        const res = await fetch(`${API}/documents`);
+        const data = await res.json();
+        const list = document.getElementById("docList");
+        list.innerHTML = "";
+        data.documentos.forEach(doc => {
+            const item = document.createElement("div");
+            item.className = "doc-item";
+            item.innerHTML = `<span title="${doc}">${doc}</span><button onclick="deleteDoc('${doc}')">✕</button>`;
+            list.appendChild(item);
+        });
+    } catch (e) {
+        console.error("Error cargando documentos:", e);
+    }
+}
+
+async function uploadFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    addMessage("Sistema", `Procesando ${file.name}...`, "thinking");
+    try {
+        const res = await fetch(`${API}/ingest`, { method: "POST", body: formData });
+        const data = await res.json();
+        removeLastThinking();
+        addMessage("Sistema", data.mensaje, "assistant");
+        loadDocuments();
+    } catch {
+        removeLastThinking();
+        addMessage("Sistema", "Error al subir el documento.", "assistant");
+    }
+    input.value = "";
+}
+
+async function deleteDoc(filename) {
+    await fetch(`${API}/documents/${encodeURIComponent(filename)}`, { method: "DELETE" });
+    loadDocuments();
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
 function addMessage(quien, texto, clase) {
     const messages = document.getElementById("messages");
     const div = document.createElement("div");
@@ -140,14 +176,13 @@ function scrollToBottom() {
     messages.scrollTop = messages.scrollHeight;
 }
 
-// Enter para enviar
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("input").addEventListener("keydown", e => {
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            sendMessage();
-        }
+        if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
-    checkStatus();
-    loadDocuments();
+    // Enter en login
+    document.getElementById("loginPass").addEventListener("keydown", e => {
+        if (e.key === "Enter") login();
+    });
+    checkSession();  // punto de entrada: ¿hay sesión activa?
 });

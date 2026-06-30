@@ -43,7 +43,9 @@ def indexar_corpus():
             ingestar(doc)
             print(f"  ✓ {doc.name}")
         except Exception as e:
+            import traceback
             print(f"  ✗ {doc.name} — ERROR: {e}")
+            traceback.print_exc()
 
     # Verificación
     client = chromadb.PersistentClient(path=str(settings.chroma_dir))
