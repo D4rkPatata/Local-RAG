@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalRAG</title>
+    <title>NexusChat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,10 +13,13 @@
     <!-- Pantalla de login (visible por defecto) -->
     <div id="loginScreen" class="login-screen">
         <div class="login-box">
-            <h1>LocalRAG</h1>
-            <p>Ingresá tus credenciales</p>
-            <input type="text" id="loginUser" placeholder="Usuario" />
-            <input type="password" id="loginPass" placeholder="Contraseña" />
+            <div class="brand">
+                <span class="brand-logo">N</span>
+                <h1>NexusChat</h1>
+            </div>
+            <p class="login-sub">Asistente interno de Nexus Solutions</p>
+            <input type="text" id="loginUser" placeholder="Usuario" autocomplete="username" />
+            <input type="password" id="loginPass" placeholder="Contraseña" autocomplete="current-password" />
             <button onclick="login()">Ingresar</button>
             <p id="loginError" class="login-error"></p>
         </div>
@@ -26,24 +29,25 @@
     <div id="appScreen" class="container" style="display:none">
         <div class="panel chat-panel">
             <div class="panel-header">
-                <h1>LocalRAG</h1>
-                <!-- Rol mostrado como info, ya no editable -->
+                <div class="brand">
+                    <span class="brand-logo">N</span>
+                    <h1>NexusChat</h1>
+                </div>
                 <span id="rolBadge" class="rol-badge"></span>
-                <span class="status-dot" id="statusDot"></span>
                 <button onclick="logout()" class="logout-btn">Salir</button>
             </div>
             <div class="messages" id="messages">
                 <div class="message assistant">
-                    Hola, soy tu asistente local. Subí documentos a la derecha y haceme preguntas sobre ellos.
+                    Hola, soy la asistente de Nexus Solutions. Pregúntame lo que necesites sobre los documentos de la empresa.
                 </div>
             </div>
             <div class="input-area">
-                <textarea id="input" placeholder="Hacé una pregunta..." rows="2"></textarea>
+                <textarea id="input" placeholder="Escribe tu pregunta..." rows="2"></textarea>
                 <button id="sendBtn" onclick="sendMessage()">Enviar</button>
             </div>
         </div>
 
-        <div class="panel docs-panel">
+        <div class="panel docs-panel" id="docsPanel">
             <div class="panel-header">
                 <h2>Documentos</h2>
             </div>

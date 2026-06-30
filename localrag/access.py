@@ -32,6 +32,39 @@ DOC_TIER: dict[str, tuple[int, str]] = {
     "D21": (3, "tecnico"), "D23": (3, "tecnico"),
 }
 
+# doc_id -> nombre legible del documento (para citar por nombre, no por código).
+DOC_TITLES: dict[str, str] = {
+    "D01": "Manual de Bienvenida",
+    "D02": "Procedimiento de Onboarding",
+    "D03": "Política de Vacaciones y Licencias",
+    "D04": "Política de Trabajo Remoto",
+    "D05": "Evaluación de Desempeño",
+    "D06": "Código de Conducta y Ética",
+    "D07": "Plan de Capacitación",
+    "D08": "Reglamento de Seguridad y Salud en el Trabajo",
+    "D09": "Política de Seguridad de TI",
+    "D10": "Gestión de Incidentes de TI",
+    "D11": "Protección de Datos de Clientes",
+    "D12": "Compras y Proveedores",
+    "D13": "Gastos, Viáticos y Reembolsos",
+    "D14": "Reglamento de Instalaciones",
+    "D15": "Directorio y Organigrama",
+    "D16": "Modelo de Pricing y Tarifario",
+    "D17": "Playbook de Propuestas y RFP",
+    "D18": "Cartera de Clientes y Contratos",
+    "D19": "Arquitecturas de Referencia (ADRs)",
+    "D20": "Post-Mortems y Lessons Learned",
+    "D21": "Runbook de Delivery / SDLC",
+    "D22": "Incidentes con Cliente y SLA",
+    "D23": "Política de Uso de IA y LLMs",
+}
+
+
+def doc_title(doc_id: str) -> str:
+    """Nombre legible del documento; cae al doc_id si no está mapeado."""
+    return DOC_TITLES.get(doc_id, doc_id)
+
+
 # rol -> conjunto de pares (tier, categoria) permitidos. "*" = cualquier categoría.
 ROLE_CLEARANCE: dict[str, set[tuple[int, str]]] = {
     "colaborador_general": {(1, "*")},
@@ -50,10 +83,21 @@ DEFAULT_CATEGORY = "desconocido"
 class User:
     name: str
     role: str
+    admin: bool = False  # capacidad de administración del sistema (ortogonal al rol)
 
 
 def is_valid_role(role: str) -> bool:
     return role in ROLE_CLEARANCE
+
+
+def is_admin(user: User) -> bool:
+    """¿El usuario puede administrar el corpus (subir/borrar documentos)?
+
+    Es una capacidad operativa SEPARADA de la clearance de lectura: gestionar el
+    sistema (sysadmin) no es lo mismo que tener jerarquía de negocio. Por eso no
+    se ata al rol `gerencia`, sino a un flag explícito.
+    """
+    return user.admin
 
 
 def tier_of(doc_id: str) -> tuple[int, str]:
@@ -84,7 +128,8 @@ USERS_DB: dict[str, dict] = {
     "ana.gomez":   {"password_hash": "$2b$12$UskBvIOkwftFxDNOrtAxc.DzpkEW6djABmlrl8hr9Fq92x9yVW2S.", "rol": "mando_medio"},
     "carlos.vega": {"password_hash": "$2b$12$EyUlL6JgEww6P6WYZTkcQ.QsCYvtrY9kFx8uFgyZoGi4LkgrhVXqm", "rol": "comercial_senior"},
     "lucia.rios":  {"password_hash": "$2b$12$WtKSyszGM1z/OdAANsBK5OxrpJt.fAk9JknC5HIspOi796IUOu6t6", "rol": "tecnico_senior"},
-    "admin":       {"password_hash": "$2b$12$2ooKGLX0yjbg1OEbmN3.lOGf0dpuCQhnpw1ratj6xFqgHbS8esMIa", "rol": "gerencia"},
+    # admin = sysadmin del sistema (puede gestionar el corpus). Flag separado del rol.
+    "admin":       {"password_hash": "$2b$12$2ooKGLX0yjbg1OEbmN3.lOGf0dpuCQhnpw1ratj6xFqgHbS8esMIa", "rol": "gerencia", "admin": True},
 }
 
 def authenticate(username: str, password: str) -> "User | None":
@@ -92,5 +137,5 @@ def authenticate(username: str, password: str) -> "User | None":
     if not entry:
         return None
     if bcrypt.checkpw(password.encode(), entry["password_hash"].encode()):
-        return User(name=username, role=entry["rol"])
+        return User(name=username, role=entry["rol"], admin=entry.get("admin", False))
     return None

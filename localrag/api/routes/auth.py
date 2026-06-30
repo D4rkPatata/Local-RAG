@@ -18,7 +18,7 @@ def login(req: LoginRequest, response: Response):
         raise HTTPException(status_code=401, detail="Credenciales inválidas.")
     token = create_session(user)
     response.set_cookie("session_token", token, httponly=True, samesite="strict")
-    return {"rol": user.role, "name": user.name}
+    return {"rol": user.role, "name": user.name, "admin": user.admin}
 
 
 @router.post("/logout")
@@ -36,4 +36,4 @@ def me(session_token: str | None = Cookie(default=None)):
     user = get_session(session_token)
     if not user:
         raise HTTPException(status_code=401, detail="Sesión expirada.")
-    return {"name": user.name, "rol": user.role}
+    return {"name": user.name, "rol": user.role, "admin": user.admin}

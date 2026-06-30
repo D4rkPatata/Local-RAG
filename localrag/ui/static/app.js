@@ -8,7 +8,7 @@ async function checkSession() {
         const res = await fetch(`${API}/auth/me`);
         if (res.ok) {
             const data = await res.json();
-            showApp(data.name, data.rol);
+            showApp(data.name, data.rol, data.admin);
         } else {
             showLogin();
         }
@@ -27,7 +27,7 @@ async function login() {
     });
     if (res.ok) {
         const data = await res.json();
-        showApp(data.name, data.rol);
+        showApp(data.name, data.rol, data.admin);
     } else {
         document.getElementById("loginError").textContent = "Usuario o contraseña incorrectos.";
     }
@@ -46,12 +46,13 @@ function showLogin() {
     document.getElementById("loginError").textContent = "";
 }
 
-function showApp(name, rol) {
+function showApp(name, rol, admin) {
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("appScreen").style.display = "flex";
-    document.getElementById("rolBadge").textContent = `${name} · ${rol}`;
-    checkStatus();
-    loadDocuments();
+    document.getElementById("rolBadge").textContent = `${name} · ${rol}` + (admin ? " · admin" : "");
+    // El panel de Documentos (subir/borrar) es solo para admin.
+    document.getElementById("docsPanel").style.display = admin ? "flex" : "none";
+    if (admin) loadDocuments();
 }
 
 // ── Chat ──────────────────────────────────────────────────────────────────────
@@ -63,18 +64,19 @@ async function sendMessage() {
 
     input.value = "";
     document.getElementById("sendBtn").disabled = true;
-    addMessage("Vos", pregunta, "user");
-    const msgEl = addMessage("Asistente", "", "assistant thinking");
+    addMessage(pregunta, "user");
+    const msgEl = addThinking();  // burbuja con los tres puntitos
 
     try {
         const res = await fetch(`${API}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pregunta, history })  // sin 'role'
+            body: JSON.stringify({ pregunta, history })
         });
 
         if (res.status === 401) {
-            msgEl.textContent = "Sesión expirada. Volvé a iniciar sesión.";
+            msgEl.classList.remove("thinking");
+            msgEl.textContent = "Tu sesión expiró. Vuelve a iniciar sesión.";
             setTimeout(showLogin, 2000);
             return;
         }
@@ -86,8 +88,8 @@ async function sendMessage() {
             const { done, value } = await reader.read();
             if (done) break;
             texto += decoder.decode(value);
-            msgEl.textContent = texto;
             msgEl.classList.remove("thinking");
+            msgEl.textContent = texto;  // reemplaza los puntitos por la respuesta
             scrollToBottom();
         }
 
@@ -95,23 +97,14 @@ async function sendMessage() {
         history.push({ role: "assistant", content: texto });
         history = history.slice(-6);
     } catch (e) {
+        msgEl.classList.remove("thinking");
         msgEl.textContent = "Error al conectar con el servidor.";
     }
 
     document.getElementById("sendBtn").disabled = false;
 }
 
-// ── Documentos ────────────────────────────────────────────────────────────────
-
-async function checkStatus() {
-    try {
-        const res = await fetch(`${API}/status`);
-        const data = await res.json();
-        document.getElementById("statusDot").className = "status-dot " + (data.ollama ? "online" : "offline");
-    } catch {
-        document.getElementById("statusDot").className = "status-dot offline";
-    }
-}
+// ── Documentos (solo admin) ─────────────────────────────────────────────────────
 
 async function loadDocuments() {
     try {
@@ -135,16 +128,16 @@ async function uploadFile(input) {
     if (!file) return;
     const formData = new FormData();
     formData.append("file", file);
-    addMessage("Sistema", `Procesando ${file.name}...`, "thinking");
+    const aviso = addMessage(`Procesando ${file.name}...`, "assistant thinking");
     try {
         const res = await fetch(`${API}/ingest`, { method: "POST", body: formData });
         const data = await res.json();
-        removeLastThinking();
-        addMessage("Sistema", data.mensaje, "assistant");
+        aviso.classList.remove("thinking");
+        aviso.textContent = data.mensaje;
         loadDocuments();
     } catch {
-        removeLastThinking();
-        addMessage("Sistema", "Error al subir el documento.", "assistant");
+        aviso.classList.remove("thinking");
+        aviso.textContent = "Error al subir el documento.";
     }
     input.value = "";
 }
@@ -156,7 +149,7 @@ async function deleteDoc(filename) {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function addMessage(quien, texto, clase) {
+function addMessage(texto, clase) {
     const messages = document.getElementById("messages");
     const div = document.createElement("div");
     div.className = `message ${clase}`;
@@ -166,9 +159,14 @@ function addMessage(quien, texto, clase) {
     return div;
 }
 
-function removeLastThinking() {
-    const thinking = document.querySelector(".message.thinking");
-    if (thinking) thinking.remove();
+function addThinking() {
+    const messages = document.getElementById("messages");
+    const div = document.createElement("div");
+    div.className = "message assistant thinking";
+    div.innerHTML = '<span class="typing-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>';
+    messages.appendChild(div);
+    scrollToBottom();
+    return div;
 }
 
 function scrollToBottom() {
@@ -180,9 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("input").addEventListener("keydown", e => {
         if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
-    // Enter en login
     document.getElementById("loginPass").addEventListener("keydown", e => {
         if (e.key === "Enter") login();
     });
-    checkSession();  // punto de entrada: ¿hay sesión activa?
+    checkSession();
 });

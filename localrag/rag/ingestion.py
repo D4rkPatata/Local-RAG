@@ -1,3 +1,4 @@
+import re
 import warnings
 from pathlib import Path
 from parsers.pdf_parser import parse_pdf
@@ -17,17 +18,62 @@ PARSERS = {
     ".txt": parse_text,
 }
 
+# Corta en límites de oración / salto de línea, no a media palabra.
+_SENT_SPLIT = re.compile(r"(?<=[.!?:;])\s+|\n+")
+
+
+def _partir_palabras(texto: str, chunk_size: int) -> list[str]:
+    """Parte una oración demasiado larga por palabras (sin cortar a media palabra)."""
+    out, cur, largo = [], [], 0
+    for w in texto.split():
+        if largo + len(w) + 1 > chunk_size and cur:
+            out.append(" ".join(cur))
+            cur, largo = [], 0
+        cur.append(w)
+        largo += len(w) + 1
+    if cur:
+        out.append(" ".join(cur))
+    return out
+
+
 def chunkear(texto: str, chunk_size: int | None = None, overlap: int | None = None) -> list[str]:
-    # Por defecto se toman los valores de settings (chunk_size=400, overlap=100)
-    # para que el corpus se indexe con la granularidad documentada del proyecto.
+    """Chunking por oraciones: agrupa oraciones hasta chunk_size, con solape.
+
+    Evita el corte a media palabra/oración del chunking por caracteres (que dejaba
+    respuestas truncadas tipo "...y notif"). El solape arrastra las últimas oraciones
+    al siguiente chunk para no perder continuidad.
+    """
     chunk_size = chunk_size if chunk_size is not None else settings.chunk_size
     overlap = overlap if overlap is not None else settings.chunk_overlap
-    chunks = []
-    inicio = 0
-    while inicio < len(texto):
-        fin = inicio + chunk_size
-        chunks.append(texto[inicio:fin])
-        inicio += chunk_size - overlap
+
+    oraciones = [s.strip() for s in _SENT_SPLIT.split(texto) if s.strip()]
+    chunks: list[str] = []
+    actual: list[str] = []
+    largo = 0
+
+    for s in oraciones:
+        if len(s) > chunk_size:  # oración enorme: partir por palabras
+            if actual:
+                chunks.append(" ".join(actual))
+                actual, largo = [], 0
+            chunks.extend(_partir_palabras(s, chunk_size))
+            continue
+        if largo + len(s) + 1 > chunk_size and actual:
+            chunks.append(" ".join(actual))
+            # solape: arrastrar las últimas oraciones hasta ~overlap caracteres
+            arrastre, tot = [], 0
+            for prev in reversed(actual):
+                if tot + len(prev) > overlap:
+                    break
+                arrastre.insert(0, prev)
+                tot += len(prev) + 1
+            actual = arrastre
+            largo = sum(len(x) + 1 for x in actual)
+        actual.append(s)
+        largo += len(s) + 1
+
+    if actual:
+        chunks.append(" ".join(actual))
     return chunks
 
 def _tier_de_archivo(filename: str) -> tuple[str, int, str]:

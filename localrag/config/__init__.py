@@ -11,11 +11,16 @@ class Settings(BaseSettings):
     # Temperatura baja: en RAG factual queremos respuestas deterministas y
     # apegadas al contexto, no creatividad (Ollama usa 0.8 por defecto).
     temperature: float = 0.2
+    # Tokens máximos de la respuesta. Ollama por defecto corta en ~128 → respuestas
+    # incompletas. Lo subimos para que no trunque procedimientos largos.
+    num_predict: int = 768
+    # Ventana de contexto. Por defecto 2048 puede truncar el contexto de 10 chunks.
+    num_ctx: int = 4096
     # Máximo de mensajes previos (usuario+asistente) que se conservan como memoria.
     max_history_messages: int = 6
     embed_model: str = "nomic-embed-text"
-    chunk_size: int = 400
-    chunk_overlap: int = 100
+    chunk_size: int = 700
+    chunk_overlap: int = 150
     top_k: int = 10
     chroma_dir: Path = BASE_DIR / "data" / "chroma_db"
     chroma_collection: str = "documentos"

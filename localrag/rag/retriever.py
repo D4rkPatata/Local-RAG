@@ -1,18 +1,23 @@
 import httpx
 import json
 from rag.vectorstore import retrieve
+from access import doc_title
 from config import settings
 
-SYSTEM_PROMPT = """Eres un asistente que responde preguntas sobre los documentos internos de una empresa.
+SYSTEM_PROMPT = """Eres la asistente interna de Nexus Solutions. Respondes preguntas sobre los documentos internos de la empresa.
 
-Reglas estrictas:
-- Responde SIEMPRE en español. Nunca uses inglés.
+REGLA PRIORITARIA: Si la información pedida NO aparece en los fragmentos, responde ÚNICAMENTE con esta frase exacta y nada más: "No tengo esa información en los documentos disponibles." Sin corchetes, sin nombres de documentos, sin explicaciones.
+
+Reglas:
+- Responde SIEMPRE en español neutro, claro y profesional. Nunca uses inglés.
 - Usa ÚNICAMENTE la información de los fragmentos del contexto. No inventes nada.
-- Cuando un fragmento tenga datos concretos (montos, porcentajes, fechas, plazos, nombres, cifras), inclúyelos TEXTUALMENTE en tu respuesta. No los resumas vagamente.
-- Cita el doc_id EXACTO que aparece en el encabezado del fragmento que usaste, en formato corto entre corchetes: [D03] (no escribas "doc_id=" dentro). Ejemplo: "Las vacaciones son 30 días al año [D03]." NUNCA inventes ni adivines un doc_id.
-- Solo cita cuando uses de verdad la información de ese fragmento para responder.
-- Si la respuesta está en el contexto, respóndela directo y completa; no pidas más información de forma innecesaria.
-- Si la información pedida NO está en ningún fragmento, responde EXACTAMENTE: "No tengo esa información en los documentos disponibles." — sin agregar ningún doc_id, corchetes ni nada más. """
+- Incluye los datos concretos TEXTUALMENTE (montos, porcentajes, fechas, plazos, nombres, cifras). No los resumas de forma vaga.
+- Redacta respuestas COMPLETAS: termina todas tus oraciones y no dejes listas ni frases a medias.
+- Cuando la pregunta pide un dato puntual (un precio, una fecha, un nombre), responde con una oración breve que lo contenga. NO copies tablas ni listas crudas del documento; extrae solo lo que se pregunta.
+- Empieza SIEMPRE con la respuesta directa, NUNCA con el nombre del documento. La cita va al FINAL de la frase, no al principio.
+- Para citar, escribe el nombre del documento ENTRE CORCHETES UNA SOLA VEZ, al final de la frase que sustenta. Ejemplo: "Las vacaciones son 30 días al año [Política de Vacaciones y Licencias]."
+- NO escribas la palabra "Fuente", NO repitas la misma cita, y NO agregues una lista de fuentes al final. Solo el nombre entre corchetes dentro del texto.
+- Nunca uses códigos como D03 ni inventes nombres de documentos. """
 
 # Refusals. En modo "opaque" la negativa por falta de clearance es idéntica a la
 # de una pregunta sin respuesta en el corpus → no revela que la información existe.
@@ -59,17 +64,19 @@ def _refusal(query: str, user) -> str:
 
 
 def generar_user_prompt(pregunta: str, chunks: list[dict]) -> str:
+    # El nombre del documento va como encabezado entre corchetes: el modelo debe
+    # copiarlo tal cual para citar (sin la palabra "Fuente", que antes copiaba).
     contexto = "\n\n---\n\n".join(
-        f"[Fragmento {i + 1} | doc_id={c['metadata'].get('doc_id', '?')}]\n{c['texto']}"
-        for i, c in enumerate(chunks)
+        f"[{doc_title(c['metadata'].get('doc_id', ''))}]\n{c['texto']}"
+        for c in chunks
     )
-    return f"""Contexto extraído de los documentos:
+    return f"""Usa estos fragmentos para responder. Cada uno empieza con el nombre del documento entre corchetes.
 
 {contexto}
 
 Pregunta: {pregunta}
 
-Recuerda citar el doc_id entre corchetes en cada afirmación."""
+Responde de forma completa. Cita el nombre del documento entre corchetes dentro del texto, sin escribir "Fuente" ni listar fuentes al final."""
 
 
 def chat_stream(pregunta: str, user=None, history: list[dict] | None = None):
@@ -92,7 +99,11 @@ def chat_stream(pregunta: str, user=None, history: list[dict] | None = None):
         json={
             "model": settings.chat_model,
             "stream": True,
-            "options": {"temperature": settings.temperature},
+            "options": {
+                "temperature": settings.temperature,
+                "num_predict": settings.num_predict,
+                "num_ctx": settings.num_ctx,
+            },
             "messages": mensajes,
         },
         timeout=120
